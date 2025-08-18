@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Typing Test</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">NEO TYPING TEST</h1>
+            <div class="subtitle">Test your typing skills in the digital void</div>
+        </header>
+
+        <div class="test-options">
+            <h3 class="options-title">TEST OPTIONS</h3>
+            <div class="options-grid">
+                <div class="option-group">
+                    <label class="option-label">DIFFICULTY</label>
+                    <div class="difficulty-options">
+                        <button class="difficulty-btn active" data-difficulty="chill">CHILL</button>
+                        <button class="difficulty-btn" data-difficulty="typist">TYPIST</button>
+                        <button class="difficulty-btn" data-difficulty="ultra">ULTRA +</button>
+                    </div>
+                </div>
+                <div class="option-group">
+                    <label class="option-label">TEST DURATION</label>
+                    <div class="time-options">
+                        <button class="time-btn active" data-time="30">30s</button>
+                        <button class="time-btn" data-time="60">60s</button>
+                        <button class="time-btn" data-time="120">2min</button>
+                        <button class="time-btn" data-time="300">5min</button>
+                        <button class="time-btn" data-time="600">10min</button>
+                    </div>
+                </div>
+                <div class="option-group">
+                    <label class="option-label">TEST TYPE</label>
+                    <div class="type-options">
+                        <button class="type-btn active" data-type="timed">TIMED</button>
+                        <button class="type-btn" data-type="words">WORDS</button>
+                        <button class="type-btn" data-type="quote">QUOTE</button>
+                    </div>
+                </div>
+                <div class="option-group" id="wordCountGroup" style="display: none;">
+                    <label class="option-label">WORD COUNT</label>
+                    <div class="word-count-input">
+                        <input type="number" id="wordCountInput" min="10" max="1000" value="50" class="neo-input">
+                        <span class="input-label">words</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat">
+                <div class="stat-value" id="wpm">0</div>
+                <div class="stat-label">WPM</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="accuracy">100%</div>
+                <div class="stat-label">ACCURACY</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="time">60</div>
+                <div class="stat-label" id="timeLabel">SECONDS</div>
+            </div>
+            <div class="stat" id="wordCountStat" style="display: none;">
+                <div class="stat-value" id="wordCount">0</div>
+                <div class="stat-label">WORDS</div>
+            </div>
+            <div class="stat" id="scoreStat" style="display: none;">
+                <div class="stat-value" id="score">0</div>
+                <div class="stat-label">SCORE</div>
+            </div>
+            <div class="stat" id="comboStat" style="display: none;">
+                <div class="stat-value" id="combo">0</div>
+                <div class="stat-label">COMBO</div>
+            </div>
+            <div class="stat" id="levelStat" style="display: none;">
+                <div class="stat-value" id="level">1</div>
+                <div class="stat-label">LEVEL</div>
+            </div>
+        </div>
+
+        <div class="typing-area">
+            <div class="game-progress" id="gameProgress" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                    <div class="clock-indicator" id="clockIndicator"></div>
+                </div>
+                <div class="progress-labels">
+                    <span class="player-label">YOU</span>
+                    <span class="clock-label">CLOCK</span>
+                </div>
+            </div>
+            <div class="text-display" id="textDisplay">
+                <span class="text-prompt">Press START to begin your typing journey...</span>
+            </div>
+            <textarea 
+                id="textInput" 
+                placeholder="Type here..." 
+                disabled
+                spellcheck="false"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+            ></textarea>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="btn btn-primary">START</button>
+            <button id="resetBtn" class="btn btn-secondary">RESET</button>
+        </div>
+
+        <div class="results" id="results" style="display: none;">
+            <h2 class="results-title">YOUR RESULTS</h2>
+            <div class="results-grid">
+                <div class="result-item">
+                    <div class="result-value" id="finalWpm">0</div>
+                    <div class="result-label">Words Per Minute</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value" id="finalAccuracy">100%</div>
+                    <div class="result-label">Accuracy</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value" id="totalWords">0</div>
+                    <div class="result-label">Total Words</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value" id="errors">0</div>
+                    <div class="result-label">Errors</div>
+                </div>
+                <div class="result-item" id="scoreResult" style="display: none;">
+                    <div class="result-value" id="finalScore">0</div>
+                    <div class="result-label">Final Score</div>
+                </div>
+                <div class="result-item" id="comboResult" style="display: none;">
+                    <div class="result-value" id="finalCombo">0</div>
+                    <div class="result-label">Best Combo</div>
+                </div>
+            </div>
+            <div class="high-score" id="highScore" style="display: none;">
+                <div class="high-score-text">🏆 NEW HIGH SCORE! 🏆</div>
+                <div class="high-score-value" id="highScoreValue">0</div>
+            </div>
+            <button id="newTestBtn" class="btn btn-primary">NEW TEST</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
