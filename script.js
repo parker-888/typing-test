@@ -243,9 +243,18 @@ class TypingTest {
         this.results.style.display = 'none';
         
         // Hide WPM, Accuracy, and Time stats during test, show minimal timer
-        if (this.wpmDisplay) this.wpmDisplay.parentElement.style.display = 'none';
-        if (this.accuracyDisplay) this.accuracyDisplay.parentElement.style.display = 'none';
-        if (this.timeDisplay) this.timeDisplay.parentElement.style.display = 'none';
+        if (this.wpmDisplay) {
+            this.wpmDisplay.parentElement.style.display = 'none';
+            console.log('WPM stat hidden');
+        }
+        if (this.accuracyDisplay) {
+            this.accuracyDisplay.parentElement.style.display = 'none';
+            console.log('Accuracy stat hidden');
+        }
+        if (this.timeDisplay) {
+            this.timeDisplay.parentElement.style.display = 'none';
+            console.log('Time stat hidden');
+        }
         
         // Show timer display for timed tests
         if (this.testType === 'timed') {
@@ -254,6 +263,9 @@ class TypingTest {
             if (timerDisplay && countdownTimer) {
                 timerDisplay.style.display = 'block';
                 countdownTimer.textContent = this.timeLeft;
+                console.log('Timer display shown:', this.timeLeft);
+            } else {
+                console.log('Timer display elements not found');
             }
         }
         
