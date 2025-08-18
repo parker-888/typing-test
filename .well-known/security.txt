@@ -1,0 +1,4 @@
+Contact: mailto:security@neotypingtest.com
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://neotypingtest.com/.well-known/security.txt
