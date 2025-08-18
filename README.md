@@ -4,26 +4,26 @@ A modern, interactive typing test website with a stunning neo glowing typewriter
 
 ## Features
 
-- **Multiple Test Types**: Choose from timed tests, word count tests, quote tests, or arcade mode
+- **Multiple Test Types**: Choose from timed tests, word count tests, or quote tests
 - **Flexible Duration**: Test options from 30 seconds to 10 minutes
-- **Arcade Mode**: Gamified typing with points, combos, levels, and a racing clock
+- **Difficulty Modes**: Chill (simple words), Typist (normal), Ultra+ (complex words with punctuation)
 - **Real-time Feedback**: See your WPM (Words Per Minute) and accuracy as you type
-- **Visual Feedback**: Characters turn green for correct typing and red for errors
+- **Visual Feedback**: Characters turn blue for correct typing and red for errors
 - **Neo Aesthetic**: Glowing cyan text, dark background, and particle effects
 - **Responsive Design**: Works perfectly on desktop and mobile devices
-- **Multiple Texts**: 10 different tech-themed passages and 10 inspirational quotes
+- **Multiple Texts**: Various passages and inspirational quotes
 - **Detailed Results**: Comprehensive statistics after each test
 - **Word Count Tracking**: Monitor your progress in word-based tests
-- **High Score System**: Track your best arcade mode scores locally
+- **Infinite Text**: Continuous typing for timed tests
 
 ## How to Use
 
 1. **Open the Website**: Simply open `index.html` in your web browser
-2. **Choose Test Options**: Select your preferred test duration and type
+2. **Choose Test Options**: Select your preferred difficulty, duration, and type
+   - **Difficulty**: Chill, Typist, or Ultra+
    - **Timed Tests**: 30s, 60s, 2min, 5min, or 10min
    - **Word Tests**: Type a specific number of words (10-1000)
    - **Quote Tests**: Type inspirational quotes
-   - **Arcade Mode**: Race against the clock with increasing difficulty
 3. **Start the Test**: Click the "START" button to begin
 4. **Type the Text**: Type the displayed text as accurately as possible
 5. **Monitor Progress**: Watch your WPM, accuracy, and progress in real-time
@@ -35,28 +35,16 @@ A modern, interactive typing test website with a stunning neo glowing typewriter
 - **START**: Begin a new typing test
 - **RESET**: Clear the current test and return to initial state
 - **NEW TEST**: Start a fresh test after viewing results
+- **Difficulty**: Choose between Chill, Typist, or Ultra+ modes
 - **Test Duration**: Choose from 30s, 60s, 2min, 5min, or 10min
-- **Test Type**: Select between Timed, Words, Quote, or Arcade tests
+- **Test Type**: Select between Timed, Words, or Quote tests
 - **Word Count**: Set target word count for word-based tests (10-1000)
 
-## Arcade Mode
+## Difficulty Modes
 
-The arcade mode adds exciting gamification elements:
-
-- **Racing Clock**: A red clock indicator chases your progress - stay ahead to survive!
-- **Points System**: Earn points for correct characters, combos, accuracy, and levels
-- **Combo Multiplier**: Build combos by typing accurately - errors reset your combo
-- **Level Progression**: Level up every 3 texts with increasing difficulty
-- **Speed Requirements**: Meet minimum WPM requirements or face combo penalties
-- **High Score Tracking**: Your best scores are saved locally
-- **Visual Feedback**: Animated progress bar, combo flashes, and level-up effects
-
-**Game Mechanics:**
-- Type through 10 short, varied texts
-- The clock speeds up with each level
-- Maintain accuracy to keep your combo multiplier
-- Beat the clock to advance to the next text
-- Score points based on speed, accuracy, and combos
+- **Chill**: Simple words, no punctuation - perfect for beginners
+- **Typist**: Normal difficulty with standard vocabulary and punctuation
+- **Ultra+**: Complex words and frequent punctuation - for advanced typists
 
 ## Statistics Tracked
 
@@ -72,6 +60,7 @@ The arcade mode adds exciting gamification elements:
 - **Canvas Animation**: Floating particles in the background
 - **Real-time Calculations**: Instant WPM and accuracy updates
 - **Mobile Optimized**: Touch-friendly interface
+- **Cumulative Statistics**: Stats persist across multiple text passages in timed tests
 
 ## Browser Compatibility
 
@@ -95,9 +84,9 @@ Typing Test/
 
 You can easily customize the typing test by:
 
-1. **Adding New Texts**: Edit the `texts` array in `script.js`
+1. **Adding New Texts**: Edit the `texts` arrays in `script.js`
 2. **Changing Colors**: Modify the CSS variables in `styles.css`
-3. **Adjusting Timer**: Change the `timeLeft` value in the JavaScript
+3. **Adjusting Timer**: Change the test duration options
 4. **Modifying Effects**: Adjust particle count and animation parameters
 
 ## Performance
