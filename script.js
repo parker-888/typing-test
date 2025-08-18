@@ -242,9 +242,10 @@ class TypingTest {
         this.startBtn.disabled = true;
         this.results.style.display = 'none';
         
-        // Hide WPM and Accuracy during test, show timer
+        // Hide WPM, Accuracy, and Time stats during test, show minimal timer
         if (this.wpmDisplay) this.wpmDisplay.parentElement.style.display = 'none';
         if (this.accuracyDisplay) this.accuracyDisplay.parentElement.style.display = 'none';
+        if (this.timeDisplay) this.timeDisplay.parentElement.style.display = 'none';
         
         // Show timer display for timed tests
         if (this.testType === 'timed') {
@@ -510,9 +511,10 @@ class TypingTest {
         if (this.wordCountDisplay) this.wordCountDisplay.textContent = '0';
         this.updateTimeLabel();
         
-        // Show WPM and Accuracy again, hide timer
+        // Show WPM, Accuracy, and Time stats again, hide minimal timer
         if (this.wpmDisplay) this.wpmDisplay.parentElement.style.display = 'block';
         if (this.accuracyDisplay) this.accuracyDisplay.parentElement.style.display = 'block';
+        if (this.timeDisplay) this.timeDisplay.parentElement.style.display = 'block';
         
         // Hide timer display
         const timerDisplay = document.getElementById('timerDisplay');

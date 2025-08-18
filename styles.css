@@ -317,14 +317,15 @@ body {
 
 /* Timer Display */
 .timer-display {
-    text-align: center;
-    margin-bottom: 1rem;
+    text-align: left;
+    margin-bottom: 0.5rem;
     font-family: 'Orbitron', monospace;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #00ffff;
     text-shadow: 0 0 10px #00ffff;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    padding-left: 0.5rem;
 }
 
 .text-display {
@@ -624,88 +625,7 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* Arcade Mode Styles */
-.game-progress {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border: 2px solid #ff00ff;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.8);
-    box-shadow: 
-        0 0 20px rgba(255, 0, 255, 0.3),
-        inset 0 0 20px rgba(255, 0, 255, 0.1);
-    backdrop-filter: blur(10px);
-}
 
-.progress-bar {
-    position: relative;
-    height: 20px;
-    background: rgba(0, 0, 0, 0.5);
-    border: 2px solid #00ffff;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 0.5rem;
-}
-
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #00ff00, #00ffff);
-    width: 0%;
-    transition: width 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-    position: relative;
-}
-
-.progress-fill::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    animation: progress-shine 2s linear infinite;
-}
-
-@keyframes progress-shine {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-.clock-indicator {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 4px;
-    height: 100%;
-    background: #ff0000;
-    box-shadow: 0 0 10px #ff0000;
-    animation: clock-pulse 1s ease-in-out infinite alternate;
-}
-
-@keyframes clock-pulse {
-    0% { box-shadow: 0 0 10px #ff0000; }
-    100% { box-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000; }
-}
-
-.progress-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.player-label {
-    color: #00ff00;
-    text-shadow: 0 0 5px #00ff00;
-}
-
-.clock-label {
-    color: #ff0000;
-    text-shadow: 0 0 5px #ff0000;
-}
 
 /* High Score Styles */
 .high-score {
