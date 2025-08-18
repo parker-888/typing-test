@@ -173,13 +173,7 @@ body {
     backdrop-filter: blur(10px);
 }
 
-.options-title {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    text-shadow: 0 0 10px #00ffff;
-    color: #00ffff;
-}
+
 
 .options-grid {
     display: grid;
@@ -319,6 +313,18 @@ body {
 .typing-area {
     margin-bottom: 3rem;
     position: relative;
+}
+
+/* Timer Display */
+.timer-display {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+    letter-spacing: 2px;
 }
 
 .text-display {

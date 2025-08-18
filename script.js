@@ -242,6 +242,20 @@ class TypingTest {
         this.startBtn.disabled = true;
         this.results.style.display = 'none';
         
+        // Hide WPM and Accuracy during test, show timer
+        if (this.wpmDisplay) this.wpmDisplay.parentElement.style.display = 'none';
+        if (this.accuracyDisplay) this.accuracyDisplay.parentElement.style.display = 'none';
+        
+        // Show timer display for timed tests
+        if (this.testType === 'timed') {
+            const timerDisplay = document.getElementById('timerDisplay');
+            const countdownTimer = document.getElementById('countdownTimer');
+            if (timerDisplay && countdownTimer) {
+                timerDisplay.style.display = 'block';
+                countdownTimer.textContent = this.timeLeft;
+            }
+        }
+        
         // Update stats every 100ms
         this.statsTimer = setInterval(() => {
             this.updateStats();
@@ -266,19 +280,28 @@ class TypingTest {
     updateTimeDisplay() {
         if (!this.timeDisplay) return;
         
+        let timeString = '';
         if (this.testDuration < 60) {
             // Show seconds for short tests
-            this.timeDisplay.textContent = this.timeLeft;
+            timeString = this.timeLeft.toString();
         } else if (this.testDuration < 3600) {
             // Show minutes:seconds for medium tests
             const minutes = Math.floor(this.timeLeft / 60);
             const seconds = this.timeLeft % 60;
-            this.timeDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            timeString = `${minutes}:${seconds.toString().padStart(2, '0')}`;
         } else {
             // Show hours:minutes for long tests
             const hours = Math.floor(this.timeLeft / 3600);
             const minutes = Math.floor((this.timeLeft % 3600) / 60);
-            this.timeDisplay.textContent = `${hours}:${minutes.toString().padStart(2, '0')}`;
+            timeString = `${hours}:${minutes.toString().padStart(2, '0')}`;
+        }
+        
+        this.timeDisplay.textContent = timeString;
+        
+        // Also update the countdown timer
+        const countdownTimer = document.getElementById('countdownTimer');
+        if (countdownTimer) {
+            countdownTimer.textContent = timeString;
         }
     }
     
@@ -486,6 +509,16 @@ class TypingTest {
         this.updateTimeDisplay();
         if (this.wordCountDisplay) this.wordCountDisplay.textContent = '0';
         this.updateTimeLabel();
+        
+        // Show WPM and Accuracy again, hide timer
+        if (this.wpmDisplay) this.wpmDisplay.parentElement.style.display = 'block';
+        if (this.accuracyDisplay) this.accuracyDisplay.parentElement.style.display = 'block';
+        
+        // Hide timer display
+        const timerDisplay = document.getElementById('timerDisplay');
+        if (timerDisplay) {
+            timerDisplay.style.display = 'none';
+        }
     }
     
     newTest() {
