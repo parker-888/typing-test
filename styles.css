@@ -46,65 +46,101 @@ body {
     text-shadow: 0 0 5px #888;
 }
 
-/* Features Section */
+/* Features Section - Hidden for users, visible to search engines */
 .features-section {
-    margin-bottom: 3rem;
-    padding: 2rem;
-    border: 2px solid #00ffff;
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.8);
-    box-shadow: 
-        0 0 20px rgba(0, 255, 255, 0.2),
-        inset 0 0 20px rgba(0, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
 }
 
 .features-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-shadow: 0 0 10px #00ffff;
-    color: #00ffff;
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: transparent;
+    text-shadow: none;
 }
 
 .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    display: block;
+    gap: 0;
 }
 
 .feature-item {
-    text-align: center;
-    padding: 1.5rem;
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    transition: none;
 }
 
 .feature-item:hover {
-    border-color: #00ffff;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-    transform: translateY(-2px);
+    border: none;
+    box-shadow: none;
+    transform: none;
 }
 
 .feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
     display: block;
 }
 
 .feature-item h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: #00ffff;
-    text-shadow: 0 0 5px #00ffff;
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: transparent;
+    text-shadow: none;
 }
 
 .feature-item p {
-    font-size: 0.9rem;
-    color: #ccc;
-    line-height: 1.4;
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: transparent;
+    line-height: 1;
 }
 
 @keyframes glow {
@@ -757,30 +793,7 @@ body {
         font-size: 1rem;
     }
     
-    .features-title {
-        font-size: 1.5rem;
-    }
-    
-    .features-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .feature-item {
-        padding: 1rem;
-    }
-    
-    .feature-icon {
-        font-size: 2rem;
-    }
-    
-    .feature-item h3 {
-        font-size: 1.1rem;
-    }
-    
-    .feature-item p {
-        font-size: 0.85rem;
-    }
+
     
     .test-options {
         padding: 1.5rem;
