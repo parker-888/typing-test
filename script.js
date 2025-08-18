@@ -242,6 +242,12 @@ class TypingTest {
         this.startBtn.disabled = true;
         this.results.style.display = 'none';
         
+        // Add test-active class for enhanced text display
+        if (this.textDisplay) {
+            this.textDisplay.classList.add('test-active');
+            console.log('Text display enhanced');
+        }
+        
         // Hide WPM, Accuracy, and Time stats during test, show minimal timer
         if (this.wpmDisplay) {
             this.wpmDisplay.parentElement.style.display = 'none';
@@ -254,6 +260,13 @@ class TypingTest {
         if (this.timeDisplay) {
             this.timeDisplay.parentElement.style.display = 'none';
             console.log('Time stat hidden');
+        }
+        
+        // Hide test options during test for focused experience
+        const testOptions = document.querySelector('.test-options');
+        if (testOptions) {
+            testOptions.style.display = 'none';
+            console.log('Test options hidden');
         }
         
         // Show timer display for timed tests
@@ -523,10 +536,23 @@ class TypingTest {
         if (this.wordCountDisplay) this.wordCountDisplay.textContent = '0';
         this.updateTimeLabel();
         
+        // Remove test-active class for normal text display
+        if (this.textDisplay) {
+            this.textDisplay.classList.remove('test-active');
+            console.log('Text display reset to normal');
+        }
+        
         // Show WPM, Accuracy, and Time stats again, hide minimal timer
         if (this.wpmDisplay) this.wpmDisplay.parentElement.style.display = 'block';
         if (this.accuracyDisplay) this.accuracyDisplay.parentElement.style.display = 'block';
         if (this.timeDisplay) this.timeDisplay.parentElement.style.display = 'block';
+        
+        // Show test options again
+        const testOptions = document.querySelector('.test-options');
+        if (testOptions) {
+            testOptions.style.display = 'block';
+            console.log('Test options shown');
+        }
         
         // Hide timer display
         const timerDisplay = document.getElementById('timerDisplay');

@@ -345,6 +345,34 @@ body {
     backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Enhanced text display when test options are hidden */
+.text-display.test-active {
+    font-size: 2.2rem;
+    line-height: 2.8;
+    min-height: 300px;
+    padding: 3rem;
+}
+
+/* Responsive scaling for enhanced text */
+@media (max-width: 768px) {
+    .text-display.test-active {
+        font-size: 1.8rem;
+        line-height: 2.4;
+        min-height: 250px;
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-display.test-active {
+        font-size: 1.5rem;
+        line-height: 2.2;
+        min-height: 200px;
+        padding: 1.5rem;
+    }
 }
 
 .text-display::before {
