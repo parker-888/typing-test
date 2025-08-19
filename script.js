@@ -173,7 +173,7 @@ class TypingTest {
         this.testDuration = 60;
         this.testType = 'timed';
         this.difficulty = 'typist'; // Default difficulty
-        this.focusMode = true; // Default to focus mode on
+        this.focusMode = false; // Default to focus mode off
         this.targetWords = 50;
         this.errors = 0;
         this.totalTyped = 0;
@@ -235,6 +235,28 @@ class TypingTest {
         this.focusButtons.forEach(btn => {
             btn.addEventListener('click', () => this.setFocusMode(btn));
         });
+        
+        // Popup event listeners
+        const continueFocusBtn = document.getElementById('continueFocusMode');
+        const cancelFocusBtn = document.getElementById('cancelFocusMode');
+        
+        if (continueFocusBtn) {
+            continueFocusBtn.addEventListener('click', () => {
+                this.focusButtons.forEach(btn => btn.classList.remove('active'));
+                document.querySelector('.focus-btn[data-focus="on"]').classList.add('active');
+                this.focusMode = true;
+                this.hideFocusModePopup();
+            });
+        }
+        
+        if (cancelFocusBtn) {
+            cancelFocusBtn.addEventListener('click', () => {
+                this.focusButtons.forEach(btn => btn.classList.remove('active'));
+                document.querySelector('.focus-btn[data-focus="off"]').classList.add('active');
+                this.focusMode = false;
+                this.hideFocusModePopup();
+            });
+        }
         
         if (this.wordCountInput) {
             this.wordCountInput.addEventListener('change', (e) => {
@@ -310,9 +332,29 @@ class TypingTest {
     }
     
     setFocusMode(button) {
-        this.focusButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        this.focusMode = button.dataset.focus === 'on';
+        if (button.dataset.focus === 'on') {
+            // Show popup for focus mode ON
+            this.showFocusModePopup();
+        } else {
+            // Directly set focus mode OFF
+            this.focusButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            this.focusMode = false;
+        }
+    }
+    
+    showFocusModePopup() {
+        const popup = document.getElementById('focusModePopup');
+        if (popup) {
+            popup.style.display = 'flex';
+        }
+    }
+    
+    hideFocusModePopup() {
+        const popup = document.getElementById('focusModePopup');
+        if (popup) {
+            popup.style.display = 'none';
+        }
     }
     
     shuffleArray(array) {
@@ -560,7 +602,12 @@ class TypingTest {
         
         // Check if test is complete
         if (this.testType === 'words' && this.wordCount >= this.targetWords) {
-            this.endTest();
+            // For word mode, end test when the final word is completed
+            // Check if we've typed a complete word that reaches the target
+            const words = input.split(/\s+/).filter(word => word.length > 0);
+            if (words.length >= this.targetWords) {
+                this.endTest();
+            }
         } else if (this.testType === 'quote' && input.length >= this.currentText.length) {
             this.endTest();
         } else if ((this.testType === 'timed' || this.testType === 'words') && input.length >= this.currentText.length) {

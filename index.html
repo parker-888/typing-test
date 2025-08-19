@@ -162,8 +162,8 @@
                 <div class="option-group">
                     <label class="option-label">FOCUS MODE</label>
                     <div class="focus-options">
-                        <button class="focus-btn" data-focus="off">OFF</button>
-                        <button class="focus-btn active" data-focus="on">ON</button>
+                        <button class="focus-btn active" data-focus="off">OFF</button>
+                        <button class="focus-btn" data-focus="on">ON</button>
                     </div>
                 </div>
                 <div class="option-group" id="wordCountGroup" style="display: none;">
@@ -264,6 +264,19 @@
             </div>
 
             <button id="newTestBtn" class="btn btn-primary">NEW TEST</button>
+        </div>
+    </div>
+
+    <!-- Focus Mode Popup -->
+    <div id="focusModePopup" class="popup-overlay" style="display: none;">
+        <div class="popup-content">
+            <h3>🎯 Focus Mode</h3>
+            <p>In Focus Mode, typing errors are hidden during the test to help you concentrate purely on speed and flow.</p>
+            <p><strong>Note:</strong> Errors are still tracked internally and will be shown in your final results.</p>
+            <div class="popup-buttons">
+                <button id="continueFocusMode" class="btn btn-primary">Continue with Focus Mode</button>
+                <button id="cancelFocusMode" class="btn btn-secondary">Go Back</button>
+            </div>
         </div>
     </div>
 
