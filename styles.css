@@ -195,14 +195,24 @@ body {
     text-shadow: 0 0 5px #888;
 }
 
-.time-options, .type-options {
+.option-description {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    text-align: center;
+    margin-top: 0.5rem;
+    font-style: italic;
+    text-shadow: 0 0 3px #666;
+}
+
+.time-options, .type-options, .focus-options {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
     flex-wrap: wrap;
 }
 
-.time-btn, .type-btn, .difficulty-btn {
+.time-btn, .type-btn, .difficulty-btn, .focus-btn {
     padding: 0.5rem 1rem;
     font-family: 'Orbitron', monospace;
     font-size: 0.9rem;
@@ -219,13 +229,13 @@ body {
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
 }
 
-.time-btn:hover, .type-btn:hover, .difficulty-btn:hover {
+.time-btn:hover, .type-btn:hover, .difficulty-btn:hover, .focus-btn:hover {
     background: rgba(0, 255, 255, 0.1);
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
     transform: translateY(-2px);
 }
 
-.time-btn.active, .type-btn.active, .difficulty-btn.active {
+.time-btn.active, .type-btn.active, .difficulty-btn.active, .focus-btn.active {
     background: rgba(0, 255, 255, 0.2);
     box-shadow: 
         0 0 20px rgba(0, 255, 255, 0.5),
@@ -710,6 +720,8 @@ body {
     0% { text-shadow: 0 0 20px #ffff00, 0 0 40px #ffff00; }
     100% { text-shadow: 0 0 30px #ffff00, 0 0 60px #ffff00; }
 }
+
+
 
 /* Combo Animation */
 .combo-flash {

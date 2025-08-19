@@ -68,6 +68,7 @@ class TypingTest {
         this.testDuration = 60;
         this.testType = 'timed';
         this.difficulty = 'typist'; // Default difficulty
+        this.focusMode = true; // Default to focus mode on
         this.targetWords = 50;
         this.errors = 0;
         this.totalTyped = 0;
@@ -100,6 +101,7 @@ class TypingTest {
         this.timeButtons = document.querySelectorAll('.time-btn');
         this.typeButtons = document.querySelectorAll('.type-btn');
         this.difficultyButtons = document.querySelectorAll('.difficulty-btn');
+        this.focusButtons = document.querySelectorAll('.focus-btn');
         this.wordCountGroup = document.getElementById('wordCountGroup');
         this.wordCountInput = document.getElementById('wordCountInput');
     }
@@ -123,6 +125,10 @@ class TypingTest {
         
         this.difficultyButtons.forEach(btn => {
             btn.addEventListener('click', () => this.setDifficulty(btn));
+        });
+        
+        this.focusButtons.forEach(btn => {
+            btn.addEventListener('click', () => this.setFocusMode(btn));
         });
         
         if (this.wordCountInput) {
@@ -179,6 +185,12 @@ class TypingTest {
         }
         
         this.resetTest();
+    }
+    
+    setFocusMode(button) {
+        this.focusButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        this.focusMode = button.dataset.focus === 'on';
     }
     
     updateTimeLabel() {
@@ -439,10 +451,16 @@ class TypingTest {
             let className = '';
             
             if (i < input.length) {
-                if (input[i] === char) {
+                if (this.focusMode) {
+                    // In focus mode, all typed characters appear as correct
                     className = 'correct';
                 } else {
-                    className = 'incorrect';
+                    // Normal mode - show actual correctness
+                    if (input[i] === char) {
+                        className = 'correct';
+                    } else {
+                        className = 'incorrect';
+                    }
                 }
             } else if (i === input.length) {
                 className = 'current';
