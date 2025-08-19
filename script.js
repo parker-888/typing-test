@@ -478,8 +478,13 @@ class TypingTest {
     }
     
     generateInfiniteText() {
-        // Combine all available texts for infinite typing and shuffle them
-        this.allTexts = this.shuffleArray([...this.texts, ...this.quotes]);
+        // For word mode and timed mode, only use word texts (no quotes)
+        if (this.testType === 'words' || this.testType === 'timed') {
+            this.allTexts = this.shuffleArray([...this.texts]);
+        } else {
+            // For other tests, combine all available texts for infinite typing and shuffle them
+            this.allTexts = this.shuffleArray([...this.texts, ...this.quotes]);
+        }
         this.currentText = this.allTexts[0];
         this.textIndex = 0;
     }
@@ -546,8 +551,8 @@ class TypingTest {
         
         const input = e.target.value;
         
-        // Track cumulative stats for timed tests
-        if (this.testType === 'timed') {
+        // Track cumulative stats for timed and word tests
+        if (this.testType === 'timed' || this.testType === 'words') {
             // Calculate the new characters typed in this input
             const newChars = input.length - (this.lastInputLength || 0);
             
@@ -571,7 +576,7 @@ class TypingTest {
             // Store current input length for next comparison
             this.lastInputLength = input.length;
         } else {
-            // For non-timed tests, use the original logic
+            // For quote tests, use the original logic
             this.totalTyped = input.length;
             
             // Check for errors
@@ -585,8 +590,8 @@ class TypingTest {
             this.correctTyped = this.totalTyped - this.errors;
         }
         
-        // Calculate word count (cumulative for timed tests)
-        if (this.testType === 'timed') {
+        // Calculate word count (cumulative for timed and word tests)
+        if (this.testType === 'timed' || this.testType === 'words') {
             this.wordCount = Math.round(this.totalTyped / 5); // Approximate word count
         } else {
             this.wordCount = Math.round(input.split(/\s+/).filter(word => word.length > 0).length);
@@ -602,12 +607,8 @@ class TypingTest {
         
         // Check if test is complete
         if (this.testType === 'words' && this.wordCount >= this.targetWords) {
-            // For word mode, end test when the final word is completed
-            // Check if we've typed a complete word that reaches the target
-            const words = input.split(/\s+/).filter(word => word.length > 0);
-            if (words.length >= this.targetWords) {
-                this.endTest();
-            }
+            // For word mode, end test when the target word count is reached
+            this.endTest();
         } else if (this.testType === 'quote' && input.length >= this.currentText.length) {
             this.endTest();
         } else if ((this.testType === 'timed' || this.testType === 'words') && input.length >= this.currentText.length) {
