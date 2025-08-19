@@ -11,7 +11,30 @@ class TypingTest {
             "Friends are important in life. They help you through good times and bad times.",
             "Exercise keeps your body healthy and strong. It also makes you feel happy and energetic.",
             "Food gives your body energy to work and play. Eating healthy food helps you stay well.",
-            "Sleep helps your body rest and recover. Getting enough sleep makes you feel refreshed."
+            "Sleep helps your body rest and recover. Getting enough sleep makes you feel refreshed.",
+            "The sun shines bright in the sky during the day. It gives us light and warmth to live.",
+            "Water is essential for all living things. We need to drink water every day to stay healthy.",
+            "Plants grow from seeds in the ground. They need sunlight and water to survive.",
+            "Animals live in many different places. Some live in forests while others live in oceans.",
+            "People work hard to achieve their goals. Success comes from dedication and effort.",
+            "Technology changes the way we live. New inventions make life easier and more fun.",
+            "Education opens doors to new opportunities. Learning never stops throughout our lives.",
+            "Family provides love and support. They are always there when we need them most.",
+            "Nature offers beauty and peace. Spending time outdoors helps us feel calm and happy.",
+            "Creativity allows us to express ourselves. Art and music bring joy to many people.",
+            "Travel broadens our horizons. Seeing new places helps us understand different cultures.",
+            "Cooking brings people together. Sharing meals creates lasting memories and bonds.",
+            "Sports teach us teamwork and discipline. Playing games helps us stay active and healthy.",
+            "Science explains how the world works. Research helps us discover new knowledge.",
+            "History teaches us about the past. Understanding history helps us plan for the future.",
+            "Language connects people across cultures. Words have the power to inspire and heal.",
+            "Time moves forward without stopping. We must use our time wisely and make it count.",
+            "Dreams give us hope for the future. Working toward our dreams makes life meaningful.",
+            "Kindness makes the world a better place. Small acts of kindness can change someone's day.",
+            "Patience helps us achieve our goals. Good things come to those who wait and work hard.",
+            "Courage allows us to face challenges. Being brave helps us overcome our fears.",
+            "Wisdom comes from experience and learning. Wise people make good decisions in life.",
+            "Happiness comes from within ourselves. Finding joy in simple things brings lasting peace."
         ];
         
         // Typist mode: Normal complexity
@@ -25,7 +48,28 @@ class TypingTest {
             "As we type, we weave stories in the fabric of the digital universe, each word a pixel in the grand mosaic of human expression and technological advancement.",
             "The keyboard is our wand, the screen our canvas, and with every keystroke, we paint pictures in the minds of those who will read our words.",
             "In the symphony of silicon and software, we are the composers, orchestrating the flow of information that powers our modern world.",
-            "The digital age has given us the power to create, connect, and communicate in ways that would have seemed like magic to previous generations."
+            "The digital age has given us the power to create, connect, and communicate in ways that would have seemed like magic to previous generations.",
+            "Beneath the surface of every digital interface lies a world of infinite complexity, where binary decisions cascade into meaningful experiences that shape our daily lives.",
+            "The rhythm of innovation pulses through the veins of our technological society, each breakthrough building upon the foundations laid by countless minds before us.",
+            "In the grand tapestry of human achievement, the digital revolution stands as a testament to our ability to transform abstract ideas into tangible realities.",
+            "The boundaries between the physical and virtual worlds continue to blur, creating new possibilities for human interaction and expression that were once unimaginable.",
+            "Every algorithm tells a story, every dataset contains a narrative waiting to be discovered by those who know how to listen to the whispers of information.",
+            "The power of connectivity transcends geographical limitations, allowing ideas to flow freely across borders and cultures in a global conversation.",
+            "As we navigate the digital landscape, we become both cartographers and explorers, mapping new territories while discovering hidden treasures of knowledge.",
+            "The evolution of technology mirrors the evolution of human thought, each advancement reflecting our collective desire to understand and shape the world around us.",
+            "In the quiet moments between keystrokes, we find the space where creativity meets computation, where human intuition guides digital precision.",
+            "The digital realm offers us a canvas without limits, where imagination becomes reality through the alchemy of code and the magic of human ingenuity.",
+            "Through the lens of technology, we gain new perspectives on age-old questions, finding answers in the patterns that emerge from vast oceans of data.",
+            "The symphony of progress plays on, with each innovation adding its unique voice to the chorus of human advancement and discovery.",
+            "In the space between zeros and ones, we find the poetry of logic, the beauty of structure, and the elegance of solutions to complex problems.",
+            "The digital revolution has democratized access to knowledge, empowering individuals to learn, create, and contribute to the global conversation.",
+            "As we type our thoughts into existence, we participate in the ongoing creation of human culture, adding our voices to the chorus of human expression.",
+            "The future belongs to those who can navigate the intersection of human creativity and technological capability, finding harmony between innovation and purpose.",
+            "Every line of code we write becomes part of the digital DNA that shapes our collective future, building the foundation for tomorrow's possibilities.",
+            "The beauty of technology lies not just in what it can do, but in how it amplifies our human potential and extends our reach beyond natural limitations.",
+            "In the grand experiment of human progress, the digital age represents our most ambitious attempt to create tools that enhance rather than replace our humanity.",
+            "The stories we tell through technology become the myths and legends of our time, shaping how future generations will understand our era and aspirations.",
+            "As we continue to explore the frontiers of digital possibility, we carry forward the torch of human curiosity, lighting the way for discoveries yet to come."
         ];
         
         // Ultra+ mode: Complex words, lots of punctuation
@@ -39,11 +83,33 @@ class TypingTest {
             "Machine learning pipelines require extensive data preprocessing, feature engineering, and hyperparameter tuning for optimal model performance.",
             "DevOps methodologies integrate continuous integration/continuous deployment (CI/CD) pipelines with automated testing and monitoring systems.",
             "Big data analytics processes petabytes of structured and unstructured data through distributed computing frameworks and real-time streaming platforms.",
-            "Internet of Things (IoT) ecosystems interconnect billions of devices, generating massive datasets for predictive analytics and automation systems."
+            "Internet of Things (IoT) ecosystems interconnect billions of devices, generating massive datasets for predictive analytics and automation systems.",
+            "Distributed ledger technology fundamentally transforms transactional transparency through immutable cryptographic verification and consensus-driven validation protocols.",
+            "Artificial intelligence systems leverage deep learning architectures to process complex multimodal datasets, enabling autonomous decision-making capabilities.",
+            "Cloud-native applications utilize container orchestration platforms to achieve horizontal scalability and fault-tolerant deployment across distributed infrastructure.",
+            "Edge computing paradigms shift computational workloads closer to data sources, minimizing latency and optimizing bandwidth utilization in distributed networks.",
+            "Natural language processing algorithms employ transformer architectures to understand contextual relationships and semantic nuances in human communication.",
+            "Cybersecurity frameworks implement defense-in-depth strategies, incorporating threat intelligence feeds and behavioral analytics for proactive threat mitigation.",
+            "Data science methodologies encompass statistical analysis, machine learning algorithms, and domain expertise to extract actionable insights from complex datasets.",
+            "Software engineering practices emphasize modular design principles, enabling maintainable codebases and scalable system architectures.",
+            "Network infrastructure optimization requires sophisticated traffic engineering and load balancing algorithms to ensure optimal performance and reliability.",
+            "Virtualization technologies abstract hardware resources, enabling efficient resource utilization and flexible deployment strategies across heterogeneous environments.",
+            "Application programming interfaces (APIs) facilitate seamless integration between disparate systems, enabling data exchange and functional interoperability.",
+            "Database management systems implement ACID compliance protocols to ensure transactional integrity and data consistency across distributed environments.",
+            "Mobile application development frameworks provide cross-platform compatibility while maintaining native performance characteristics and user experience standards.",
+            "Web application security encompasses input validation, output encoding, and session management to prevent common vulnerability exploitation and data breaches.",
+            "Performance optimization techniques include caching strategies, database query optimization, and resource compression to enhance application responsiveness.",
+            "User experience design principles emphasize accessibility, usability, and intuitive interaction patterns to maximize user engagement and satisfaction.",
+            "Continuous monitoring systems provide real-time visibility into application performance, enabling proactive issue identification and resolution.",
+            "Scalability engineering involves horizontal and vertical scaling strategies to accommodate growing user demands and increasing computational requirements.",
+            "Disaster recovery planning ensures business continuity through redundant systems, backup strategies, and automated failover mechanisms.",
+            "Compliance frameworks establish regulatory adherence through audit trails, data governance policies, and security control implementations.",
+            "Innovation management processes facilitate rapid prototyping, iterative development, and user feedback integration to accelerate product evolution.",
+            "Knowledge management systems organize information assets, enabling efficient knowledge sharing and collaborative problem-solving across organizational boundaries."
         ];
         
         // Set default texts based on current difficulty
-        this.texts = this.typistTexts; // Default to typist mode
+        this.texts = this.shuffleArray(this.typistTexts); // Default to typist mode
         
         this.quotes = [
             "The only way to do great work is to love what you do. - Steve Jobs",
@@ -55,7 +121,46 @@ class TypingTest {
             "Technology is best when it brings people together. - Matt Mullenweg",
             "The computer was born to solve problems that did not exist before. - Bill Gates",
             "The advance of technology is based on making it fit in so that you don't really even notice it. - Douglas Adams",
-            "Any sufficiently advanced technology is indistinguishable from magic. - Arthur C. Clarke"
+            "Any sufficiently advanced technology is indistinguishable from magic. - Arthur C. Clarke",
+            "The greatest glory in living lies not in never falling, but in rising every time we fall. - Nelson Mandela",
+            "Life is what happens when you're busy making other plans. - John Lennon",
+            "The way to get started is to quit talking and begin doing. - Walt Disney",
+            "It does not matter how slowly you go as long as you do not stop. - Confucius",
+            "The only impossible journey is the one you never begin. - Tony Robbins",
+            "Believe you can and you're halfway there. - Theodore Roosevelt",
+            "What you get by achieving your goals is not as important as what you become by achieving your goals. - Zig Ziglar",
+            "The mind is everything. What you think you become. - Buddha",
+            "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+            "It always seems impossible until it's done. - Nelson Mandela",
+            "The future depends on what you do today. - Mahatma Gandhi",
+            "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
+            "The only person you are destined to become is the person you decide to be. - Ralph Waldo Emerson",
+            "Success usually comes to those who are too busy to be looking for it. - Henry David Thoreau",
+            "The harder you work for something, the greater you'll feel when you achieve it. - Unknown",
+            "Dream big and dare to fail. - Norman Vaughan",
+            "The best revenge is massive success. - Frank Sinatra",
+            "I find that the harder I work, the more luck I seem to have. - Thomas Jefferson",
+            "The only way to achieve the impossible is to believe it is possible. - Charles Kingsleigh",
+            "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
+            "The journey of a thousand miles begins with one step. - Lao Tzu",
+            "What we think, we become. - Buddha",
+            "The only true wisdom is in knowing you know nothing. - Socrates",
+            "Be the change that you wish to see in the world. - Mahatma Gandhi",
+            "In the middle of difficulty lies opportunity. - Albert Einstein",
+            "The only thing we have to fear is fear itself. - Franklin D. Roosevelt",
+            "It is during our darkest moments that we must focus to see the light. - Aristotle",
+            "The best and most beautiful things in the world cannot be seen or even touched. - Helen Keller",
+            "Life is 10% what happens to you and 90% how you react to it. - Charles R. Swindoll",
+            "The purpose of our lives is to be happy. - Dalai Lama",
+            "Get busy living or get busy dying. - Stephen King",
+            "The only thing standing between you and your goal is the story you keep telling yourself. - Jordan Belfort",
+            "Everything you've ever wanted is on the other side of fear. - George Addair",
+            "The two most important days in your life are the day you are born and the day you find out why. - Mark Twain",
+            "The only person you should try to be better than is the person you were yesterday. - Unknown",
+            "The best way to find yourself is to lose yourself in the service of others. - Mahatma Gandhi",
+            "The only thing that interferes with my learning is my education. - Albert Einstein",
+            "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+            "The only way to do great work is to love what you do. - Steve Jobs"
         ];
         
         this.currentText = '';
@@ -152,15 +257,32 @@ class TypingTest {
         button.classList.add('active');
         this.testType = button.dataset.type;
         
+        // Get references to option groups
+        const timeGroup = document.querySelector('.option-group:has(.time-options)');
+        const difficultyGroup = document.querySelector('.option-group:has(.difficulty-options)');
+        
         // Hide all special stats initially
         if (this.wordCountGroup) this.wordCountGroup.style.display = 'none';
         if (this.wordCountStat) this.wordCountStat.style.display = 'none';
         if (this.timeDisplay && this.timeDisplay.parentElement) this.timeDisplay.parentElement.style.display = 'block';
         
         if (this.testType === 'words') {
+            // Word mode: show word count, hide timer
             if (this.wordCountGroup) this.wordCountGroup.style.display = 'block';
             if (this.wordCountStat) this.wordCountStat.style.display = 'block';
             if (this.timeDisplay && this.timeDisplay.parentElement) this.timeDisplay.parentElement.style.display = 'none';
+            if (timeGroup) timeGroup.style.display = 'none';
+            if (difficultyGroup) difficultyGroup.style.display = 'block';
+        } else if (this.testType === 'quote') {
+            // Quote mode: hide timer and difficulty
+            if (this.timeDisplay && this.timeDisplay.parentElement) this.timeDisplay.parentElement.style.display = 'none';
+            if (timeGroup) timeGroup.style.display = 'none';
+            if (difficultyGroup) difficultyGroup.style.display = 'none';
+        } else {
+            // Timed mode: show everything
+            if (this.timeDisplay && this.timeDisplay.parentElement) this.timeDisplay.parentElement.style.display = 'block';
+            if (timeGroup) timeGroup.style.display = 'block';
+            if (difficultyGroup) difficultyGroup.style.display = 'block';
         }
         
         this.updateTimeLabel();
@@ -174,13 +296,13 @@ class TypingTest {
         // Update texts based on difficulty
         switch(this.difficulty) {
             case 'chill':
-                this.texts = this.chillTexts;
+                this.texts = this.shuffleArray(this.chillTexts);
                 break;
             case 'typist':
-                this.texts = this.typistTexts;
+                this.texts = this.shuffleArray(this.typistTexts);
                 break;
             case 'ultra':
-                this.texts = this.ultraTexts;
+                this.texts = this.shuffleArray(this.ultraTexts);
                 break;
         }
         
@@ -191,6 +313,16 @@ class TypingTest {
         this.focusButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
         this.focusMode = button.dataset.focus === 'on';
+    }
+    
+    shuffleArray(array) {
+        // Fisher-Yates shuffle algorithm
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
     }
     
     updateTimeLabel() {
@@ -235,16 +367,19 @@ class TypingTest {
                 }
             }, 1000);
         } else if (this.testType === 'words') {
+            // Word mode: no timer, test continues until word count is reached
             if (this.wordCountDisplay) this.wordCountDisplay.textContent = '0';
+        } else if (this.testType === 'quote') {
+            // Quote mode: no timer, test continues until quote is completed
         }
         
-        // Generate infinite text for timed tests
-        if (this.testType === 'timed') {
+        // Generate text based on test type
+        if (this.testType === 'timed' || this.testType === 'words') {
             this.generateInfiniteText();
         } else if (this.testType === 'quote') {
-            this.currentText = this.quotes[Math.floor(Math.random() * this.quotes.length)];
-        } else {
-            this.currentText = this.texts[Math.floor(Math.random() * this.texts.length)];
+            // Shuffle quotes and pick a random one
+            const shuffledQuotes = this.shuffleArray(this.quotes);
+            this.currentText = shuffledQuotes[0];
         }
         
         // Update UI
@@ -301,8 +436,8 @@ class TypingTest {
     }
     
     generateInfiniteText() {
-        // Combine all available texts for infinite typing
-        this.allTexts = [...this.texts, ...this.quotes];
+        // Combine all available texts for infinite typing and shuffle them
+        this.allTexts = this.shuffleArray([...this.texts, ...this.quotes]);
         this.currentText = this.allTexts[0];
         this.textIndex = 0;
     }
@@ -428,8 +563,8 @@ class TypingTest {
             this.endTest();
         } else if (this.testType === 'quote' && input.length >= this.currentText.length) {
             this.endTest();
-        } else if (this.testType === 'timed' && input.length >= this.currentText.length) {
-            // For timed tests, provide infinite text
+        } else if ((this.testType === 'timed' || this.testType === 'words') && input.length >= this.currentText.length) {
+            // For timed and word tests, provide infinite text
             this.provideNextText();
         }
     }
