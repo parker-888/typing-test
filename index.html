@@ -80,30 +80,37 @@
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <h1 class="title">Neo Typing Test</h1>
-            <div class="subtitle">Test your typing skills in the digital void</div>
-        </header>
-
-        <!-- Authentication Section -->
-        <div class="auth-section" id="authSection">
-            <div class="auth-container">
-                <div class="auth-buttons" id="authButtons">
-                    <button class="btn btn-primary" id="loginBtn">LOGIN</button>
-                    <button class="btn btn-secondary" id="signupBtn">SIGN UP</button>
-                </div>
-                <div class="user-profile" id="userProfile" style="display: none;">
-                    <div class="user-info">
-                        <span class="username" id="username">User</span>
-                        <span class="user-email" id="userEmail">user@example.com</span>
-                    </div>
-                    <div class="user-actions">
-                        <button class="btn btn-secondary" id="profileBtn">PROFILE</button>
-                        <button class="btn btn-secondary" id="logoutBtn">LOGOUT</button>
+        <!-- Top Navigation Bar -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <h1 class="title">Neo Typing Test</h1>
+            </div>
+            <div class="nav-right">
+                <!-- Authentication Section -->
+                <div class="auth-section" id="authSection">
+                    <div class="auth-container">
+                        <div class="auth-buttons" id="authButtons">
+                            <button class="btn btn-primary" id="loginBtn">LOGIN</button>
+                            <button class="btn btn-secondary" id="signupBtn">SIGN UP</button>
+                        </div>
+                        <div class="user-profile" id="userProfile" style="display: none;">
+                            <div class="user-info">
+                                <span class="username" id="username">User</span>
+                                <span class="user-email" id="userEmail">user@example.com</span>
+                            </div>
+                            <div class="user-actions">
+                                <button class="btn btn-secondary" id="profileBtn">PROFILE</button>
+                                <button class="btn btn-secondary" id="logoutBtn">LOGOUT</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </nav>
+
+        <header class="header">
+            <div class="subtitle">Test your typing skills in the digital void</div>
+        </header>
 
         <section class="features-section">
             <h2 class="features-title">Why Choose Our Typing Test?</h2>
@@ -142,9 +149,8 @@
         </section>
 
         <div class="test-options">
-            <div class="options-grid">
+            <div class="options-row">
                 <div class="option-group">
-                    <label class="option-label">DIFFICULTY</label>
                     <div class="difficulty-options">
                         <button class="difficulty-btn active" data-difficulty="chill">CHILL</button>
                         <button class="difficulty-btn" data-difficulty="typist">TYPIST</button>
@@ -152,7 +158,6 @@
                     </div>
                 </div>
                 <div class="option-group">
-                    <label class="option-label">TEST DURATION</label>
                     <div class="time-options">
                         <button class="time-btn active" data-time="30">30s</button>
                         <button class="time-btn" data-time="60">60s</button>
@@ -162,7 +167,6 @@
                     </div>
                 </div>
                 <div class="option-group">
-                    <label class="option-label">TEST TYPE</label>
                     <div class="type-options">
                         <button class="type-btn active" data-type="timed">TIMED</button>
                         <button class="type-btn" data-type="words">WORDS</button>
@@ -170,14 +174,12 @@
                     </div>
                 </div>
                 <div class="option-group">
-                    <label class="option-label">FOCUS MODE</label>
                     <div class="focus-options">
-                        <button class="focus-btn active" data-focus="off">OFF</button>
-                        <button class="focus-btn" data-focus="on">ON</button>
+                        <button class="focus-btn active" data-focus="off">FOCUS OFF</button>
+                        <button class="focus-btn" data-focus="on">FOCUS ON</button>
                     </div>
                 </div>
                 <div class="option-group" id="wordCountGroup" style="display: none;">
-                    <label class="option-label">WORD COUNT</label>
                     <div class="word-count-input">
                         <input type="number" id="wordCountInput" min="10" max="1000" value="50" class="neo-input">
                         <span class="input-label">words</span>
