@@ -29,9 +29,26 @@ body {
 }
 
 .subtitle {
-    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.subtitle-main {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.subtitle-secondary {
+    font-size: 1rem;
     color: #888;
     text-shadow: 0 0 5px #888;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 /* Features Section - Hidden for users, visible to search engines */
@@ -981,8 +998,7 @@ body {
 
 .auth-container {
     display: inline-block;
-    padding: 1rem 2rem;
-    border: 2px solid #00ffff;
+    padding: 0.8rem 1.5rem;
     border-radius: 15px;
     background: rgba(0, 0, 0, 0.8);
     box-shadow: 
@@ -1240,6 +1256,7 @@ body {
     text-shadow: 0 0 5px #00ffff;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
     transition: all 0.3s ease;
+    text-align: left;
 }
 
 .neo-input:focus {
@@ -1283,7 +1300,7 @@ body {
     border: 2px solid #00ffff;
     border-radius: 15px;
     padding: 2.5rem;
-    max-width: 450px;
+    max-width: 500px;
     width: 100%;
     box-shadow: 
         0 0 30px rgba(0, 255, 255, 0.3),
@@ -1308,6 +1325,10 @@ body {
     color: #888;
     margin-bottom: 2rem;
     text-shadow: 0 0 5px #888;
+    line-height: 1.5;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .social-login-section {
@@ -1337,8 +1358,10 @@ body {
     transform: translateY(-2px);
 }
 
-.social-icon {
-    font-size: 1.2rem;
+.social-logo {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }
 
 .divider {
