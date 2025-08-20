@@ -709,6 +709,12 @@ class TypingTest {
         
         this.results.style.display = 'block';
         
+        // Save test result if user is logged in
+        if (window.authManager && window.authManager.currentUser) {
+            const duration = (this.endTime - this.startTime) / 1000; // seconds
+            window.authManager.saveTestResult(wpm, accuracy, this.testType, this.difficulty, duration);
+        }
+        
         // Scroll to results
         this.results.scrollIntoView({ behavior: 'smooth' });
     }

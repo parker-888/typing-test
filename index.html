@@ -58,6 +58,9 @@
     <link rel="stylesheet" href="styles.css?v=2">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     
+    <!-- Supabase -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -81,6 +84,26 @@
             <h1 class="title">Neo Typing Test</h1>
             <div class="subtitle">Test your typing skills in the digital void</div>
         </header>
+
+        <!-- Authentication Section -->
+        <div class="auth-section" id="authSection">
+            <div class="auth-container">
+                <div class="auth-buttons" id="authButtons">
+                    <button class="btn btn-primary" id="loginBtn">LOGIN</button>
+                    <button class="btn btn-secondary" id="signupBtn">SIGN UP</button>
+                </div>
+                <div class="user-profile" id="userProfile" style="display: none;">
+                    <div class="user-info">
+                        <span class="username" id="username">User</span>
+                        <span class="user-email" id="userEmail">user@example.com</span>
+                    </div>
+                    <div class="user-actions">
+                        <button class="btn btn-secondary" id="profileBtn">PROFILE</button>
+                        <button class="btn btn-secondary" id="logoutBtn">LOGOUT</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <section class="features-section">
             <h2 class="features-title">Why Choose Our Typing Test?</h2>
@@ -252,6 +275,41 @@
 
             <button id="newTestBtn" class="btn btn-primary">NEW TEST</button>
         </div>
+
+        <!-- Profile Section -->
+        <div class="profile-section" id="profileSection" style="display: none;">
+            <h2 class="profile-title">YOUR PROFILE</h2>
+            <div class="profile-content">
+                <div class="profile-stats">
+                    <div class="stat-card">
+                        <h3>Personal Bests</h3>
+                        <div class="best-stats">
+                            <div class="best-stat">
+                                <span class="best-label">Highest WPM</span>
+                                <span class="best-value" id="bestWpm">0</span>
+                            </div>
+                            <div class="best-stat">
+                                <span class="best-label">Best Accuracy</span>
+                                <span class="best-value" id="bestAccuracy">0%</span>
+                            </div>
+                            <div class="best-stat">
+                                <span class="best-label">Tests Completed</span>
+                                <span class="best-value" id="testsCompleted">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Progress Chart</h3>
+                        <div class="chart-container">
+                            <canvas id="progressChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn btn-secondary" id="deleteAccountBtn">DELETE ACCOUNT</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Focus Mode Popup -->
@@ -267,6 +325,7 @@
         </div>
     </div>
 
+    <script src="auth.js"></script>
     <script src="script.js?v=2"></script>
 </body>
 </html>
