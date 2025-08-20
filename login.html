@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self' https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DBMPLN4WKX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DBMPLN4WKX');
+    </script>
+    
+    <!-- SEO Meta Tags -->
+    <title>Login | Neo Typing Test</title>
+    <meta name="description" content="Login to your Neo Typing Test account to track your progress and personal bests.">
+    <meta name="author" content="Neo Typing Test">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Supabase -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Top Navigation Bar -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="index.html" class="title-link">
+                    <h1 class="title">Neo Typing Test</h1>
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="index.html" class="btn btn-secondary">BACK TO TEST</a>
+            </div>
+        </nav>
+
+        <!-- Login Form -->
+        <div class="auth-page">
+            <div class="auth-card">
+                <h2 class="auth-title">LOGIN</h2>
+                <p class="auth-subtitle">Enter the digital realm</p>
+                
+                <div class="social-login-section">
+                    <button class="btn btn-primary social-btn" id="googleLoginBtn">
+                        <span class="social-icon">🔍</span>
+                        Continue with Google
+                    </button>
+                    <button class="btn btn-primary social-btn" id="githubLoginBtn">
+                        <span class="social-icon">🐙</span>
+                        Continue with GitHub
+                    </button>
+                </div>
+                
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="neo-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="neo-input" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">LOGIN</button>
+                </form>
+                
+                <div class="auth-links">
+                    <a href="signup.html" class="auth-link">Don't have an account? Sign up</a>
+                    <a href="#" class="auth-link" id="forgotPassword">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        // Login page specific functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const googleLoginBtn = document.getElementById('googleLoginBtn');
+            const githubLoginBtn = document.getElementById('githubLoginBtn');
+            const loginForm = document.getElementById('loginForm');
+            const forgotPassword = document.getElementById('forgotPassword');
+
+            // Social login handlers
+            googleLoginBtn.addEventListener('click', () => {
+                if (window.authManager) {
+                    window.authManager.loginWithGoogle();
+                }
+            });
+
+            githubLoginBtn.addEventListener('click', () => {
+                if (window.authManager) {
+                    window.authManager.loginWithGitHub();
+                }
+            });
+
+            // Form login handler
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                if (window.authManager && window.authManager.supabase) {
+                    try {
+                        const { error } = await window.authManager.supabase.auth.signInWithPassword({
+                            email: email,
+                            password: password
+                        });
+                        
+                        if (error) {
+                            alert('Login failed: ' + error.message);
+                        } else {
+                            // Redirect to main page after successful login
+                            window.location.href = 'index.html';
+                        }
+                    } catch (error) {
+                        alert('Login failed. Please try again.');
+                    }
+                }
+            });
+
+            // Forgot password handler
+            forgotPassword.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Password reset functionality coming soon!');
+            });
+        });
+    </script>
+</body>
+</html>

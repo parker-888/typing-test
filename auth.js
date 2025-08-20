@@ -67,19 +67,20 @@ class AuthManager {
     }
 
     bindEvents() {
-        // Auth buttons
-        document.getElementById('loginBtn').addEventListener('click', () => this.showLoginModal());
-        document.getElementById('signupBtn').addEventListener('click', () => this.showSignupModal());
-        document.getElementById('logoutBtn').addEventListener('click', () => this.logout());
-        document.getElementById('profileBtn').addEventListener('click', () => this.showProfile());
-        document.getElementById('deleteAccountBtn').addEventListener('click', () => this.deleteAccount());
+        // Only bind events if elements exist (for main page)
+        const logoutBtn = document.getElementById('logoutBtn');
+        const profileBtn = document.getElementById('profileBtn');
+        const deleteAccountBtn = document.getElementById('deleteAccountBtn');
 
-        // Close modals when clicking outside
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal-overlay')) {
-                this.hideModals();
-            }
-        });
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', () => this.logout());
+        }
+        if (profileBtn) {
+            profileBtn.addEventListener('click', () => this.showProfile());
+        }
+        if (deleteAccountBtn) {
+            deleteAccountBtn.addEventListener('click', () => this.deleteAccount());
+        }
     }
 
     updateUI(isLoggedIn) {
@@ -88,67 +89,22 @@ class AuthManager {
         const profileSection = document.getElementById('profileSection');
 
         if (isLoggedIn && this.userProfile) {
-            authButtons.style.display = 'none';
-            userProfile.style.display = 'flex';
-            document.getElementById('username').textContent = this.userProfile.username;
-            document.getElementById('userEmail').textContent = this.currentUser.email;
+            if (authButtons) authButtons.style.display = 'none';
+            if (userProfile) {
+                userProfile.style.display = 'flex';
+                const usernameElement = document.getElementById('username');
+                const userEmailElement = document.getElementById('userEmail');
+                if (usernameElement) usernameElement.textContent = this.userProfile.username;
+                if (userEmailElement) userEmailElement.textContent = this.currentUser.email;
+            }
         } else {
-            authButtons.style.display = 'flex';
-            userProfile.style.display = 'none';
-            profileSection.style.display = 'none';
+            if (authButtons) authButtons.style.display = 'flex';
+            if (userProfile) userProfile.style.display = 'none';
+            if (profileSection) profileSection.style.display = 'none';
         }
     }
 
-    showLoginModal() {
-        this.hideModals();
-        const modal = document.createElement('div');
-        modal.className = 'modal-overlay';
-        modal.innerHTML = `
-            <div class="modal-content">
-                <h3>Login</h3>
-                <div class="social-login">
-                    <button class="btn btn-primary" onclick="authManager.loginWithGoogle()">
-                        <span>🔍</span> Continue with Google
-                    </button>
-                    <button class="btn btn-primary" onclick="authManager.loginWithGitHub()">
-                        <span>🐙</span> Continue with GitHub
-                    </button>
-                </div>
-                <button class="btn btn-secondary" onclick="authManager.hideModals()">Cancel</button>
-            </div>
-        `;
-        document.body.appendChild(modal);
-    }
 
-    showSignupModal() {
-        this.hideModals();
-        const modal = document.createElement('div');
-        modal.className = 'modal-overlay';
-        modal.innerHTML = `
-            <div class="modal-content">
-                <h3>Create Account</h3>
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" class="neo-input" placeholder="Choose a username">
-                </div>
-                <div class="social-login">
-                    <button class="btn btn-primary" onclick="authManager.signupWithGoogle()">
-                        <span>🔍</span> Sign up with Google
-                    </button>
-                    <button class="btn btn-primary" onclick="authManager.signupWithGitHub()">
-                        <span>🐙</span> Sign up with GitHub
-                    </button>
-                </div>
-                <button class="btn btn-secondary" onclick="authManager.hideModals()">Cancel</button>
-            </div>
-        `;
-        document.body.appendChild(modal);
-    }
-
-    hideModals() {
-        const modals = document.querySelectorAll('.modal-overlay');
-        modals.forEach(modal => modal.remove());
-    }
 
     async loginWithGoogle() {
         if (!supabase) {

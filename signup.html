@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self' https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DBMPLN4WKX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DBMPLN4WKX');
+    </script>
+    
+    <!-- SEO Meta Tags -->
+    <title>Sign Up | Neo Typing Test</title>
+    <meta name="description" content="Create your Neo Typing Test account to track your progress and personal bests.">
+    <meta name="author" content="Neo Typing Test">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Supabase -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Top Navigation Bar -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="index.html" class="title-link">
+                    <h1 class="title">Neo Typing Test</h1>
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="index.html" class="btn btn-secondary">BACK TO TEST</a>
+            </div>
+        </nav>
+
+        <!-- Signup Form -->
+        <div class="auth-page">
+            <div class="auth-card">
+                <h2 class="auth-title">SIGN UP</h2>
+                <p class="auth-subtitle">Join the digital revolution</p>
+                
+                <div class="social-login-section">
+                    <button class="btn btn-primary social-btn" id="googleSignupBtn">
+                        <span class="social-icon">🔍</span>
+                        Sign up with Google
+                    </button>
+                    <button class="btn btn-primary social-btn" id="githubSignupBtn">
+                        <span class="social-icon">🐙</span>
+                        Sign up with GitHub
+                    </button>
+                </div>
+                
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                
+                <form class="signup-form" id="signupForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" class="neo-input" required>
+                        <small class="form-hint">Choose a unique username for your profile</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" name="email" class="neo-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" name="password" class="neo-input" required>
+                        <small class="form-hint">Minimum 6 characters</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" class="neo-input" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">CREATE ACCOUNT</button>
+                </form>
+                
+                <div class="auth-links">
+                    <a href="login.html" class="auth-link">Already have an account? Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        // Signup page specific functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const googleSignupBtn = document.getElementById('googleSignupBtn');
+            const githubSignupBtn = document.getElementById('githubSignupBtn');
+            const signupForm = document.getElementById('signupForm');
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('signupPassword');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+
+            // Social signup handlers
+            googleSignupBtn.addEventListener('click', () => {
+                const username = usernameInput.value.trim();
+                if (!username) {
+                    alert('Please enter a username before signing up with Google');
+                    usernameInput.focus();
+                    return;
+                }
+                
+                // Store username for after OAuth redirect
+                sessionStorage.setItem('pendingUsername', username);
+                
+                if (window.authManager) {
+                    window.authManager.signupWithGoogle();
+                }
+            });
+
+            githubSignupBtn.addEventListener('click', () => {
+                const username = usernameInput.value.trim();
+                if (!username) {
+                    alert('Please enter a username before signing up with GitHub');
+                    usernameInput.focus();
+                    return;
+                }
+                
+                // Store username for after OAuth redirect
+                sessionStorage.setItem('pendingUsername', username);
+                
+                if (window.authManager) {
+                    window.authManager.signupWithGitHub();
+                }
+            });
+
+            // Form signup handler
+            signupForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const username = usernameInput.value.trim();
+                const email = document.getElementById('signupEmail').value;
+                const password = passwordInput.value;
+                const confirmPassword = confirmPasswordInput.value;
+
+                // Validation
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match');
+                    return;
+                }
+
+                if (password.length < 6) {
+                    alert('Password must be at least 6 characters long');
+                    return;
+                }
+
+                if (window.authManager && window.authManager.supabase) {
+                    try {
+                        // Create user account
+                        const { data, error } = await window.authManager.supabase.auth.signUp({
+                            email: email,
+                            password: password,
+                            options: {
+                                data: {
+                                    username: username
+                                }
+                            }
+                        });
+                        
+                        if (error) {
+                            alert('Signup failed: ' + error.message);
+                        } else {
+                            alert('Account created successfully! Please check your email to verify your account.');
+                            window.location.href = 'login.html';
+                        }
+                    } catch (error) {
+                        alert('Signup failed. Please try again.');
+                    }
+                }
+            });
+
+            // Real-time password confirmation validation
+            confirmPasswordInput.addEventListener('input', () => {
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    confirmPasswordInput.style.borderColor = '#ff4444';
+                } else {
+                    confirmPasswordInput.style.borderColor = '#00ffff';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
