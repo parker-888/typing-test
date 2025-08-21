@@ -25,6 +25,7 @@ class AuthManager {
         this.currentUser = null;
         this.userProfile = null;
         this.init();
+        this.initializeTheme();
     }
 
     async init() {
@@ -456,6 +457,40 @@ class AuthManager {
             this.userProfile = { ...this.userProfile, ...updates };
         } catch (error) {
             console.error('Error saving test result:', error);
+        }
+    }
+    
+    // Theme management methods
+    initializeTheme() {
+        // Check for saved theme preference or default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        this.updateThemeIcon(savedTheme);
+        this.setupThemeToggle();
+    }
+    
+    setupThemeToggle() {
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                this.toggleTheme();
+            });
+        }
+    }
+    
+    toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        this.updateThemeIcon(newTheme);
+    }
+    
+    updateThemeIcon(theme) {
+        const themeIcon = document.querySelector('.theme-icon');
+        if (themeIcon) {
+            themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
         }
     }
 }

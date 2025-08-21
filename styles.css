@@ -1,3 +1,44 @@
+/* CSS Variables for Light/Dark Themes */
+:root {
+    /* Dark Theme (Default) */
+    --bg-primary: #000;
+    --bg-secondary: rgba(0, 0, 0, 0.6);
+    --bg-tertiary: rgba(0, 0, 0, 0.8);
+    --text-primary: #00ffff;
+    --text-secondary: #888;
+    --text-tertiary: #666;
+    --accent-primary: #00ffff;
+    --accent-secondary: #ff00ff;
+    --accent-highlight: #ffff00;
+    --border-primary: #00ffff;
+    --border-secondary: rgba(0, 255, 255, 0.3);
+    --shadow-primary: rgba(0, 255, 255, 0.2);
+    --shadow-secondary: rgba(0, 255, 255, 0.1);
+    --shadow-glow: rgba(0, 255, 255, 0.3);
+    --error-color: #ff0000;
+    --success-color: #00ff00;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+    --bg-primary: #f8f9fa;
+    --bg-secondary: rgba(248, 249, 250, 0.9);
+    --bg-tertiary: rgba(248, 249, 250, 0.95);
+    --text-primary: #1a1a1a;
+    --text-secondary: #666;
+    --text-tertiary: #888;
+    --accent-primary: #ffd700;
+    --accent-secondary: #ff8c00;
+    --accent-highlight: #ff6b35;
+    --border-primary: #ffd700;
+    --border-secondary: rgba(255, 215, 0, 0.5);
+    --shadow-primary: rgba(255, 215, 0, 0.3);
+    --shadow-secondary: rgba(255, 215, 0, 0.1);
+    --shadow-glow: rgba(255, 215, 0, 0.4);
+    --error-color: #d32f2f;
+    --success-color: #388e3c;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,10 +47,11 @@
 
 body {
     font-family: 'Orbitron', monospace;
-    background: #000;
-    color: #00ffff;
+    background: var(--bg-primary);
+    color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -36,16 +78,16 @@ body {
 .subtitle-main {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
+    color: var(--accent-primary);
+    text-shadow: 0 0 10px var(--accent-primary);
     margin-bottom: 1rem;
     letter-spacing: 2px;
 }
 
 .subtitle-secondary {
     font-size: 1rem;
-    color: #888;
-    text-shadow: 0 0 5px #888;
+    color: var(--text-secondary);
+    text-shadow: 0 0 5px var(--text-secondary);
     line-height: 1.6;
     max-width: 600px;
     margin: 0 auto;
@@ -151,15 +193,15 @@ body {
 @keyframes glow {
     from {
         text-shadow: 
-            0 0 3px #00ffff,
-            0 0 6px #00ffff,
-            0 0 9px #00ffff;
+            0 0 3px var(--accent-primary),
+            0 0 6px var(--accent-primary),
+            0 0 9px var(--accent-primary);
     }
     to {
         text-shadow: 
-            0 0 5px #00ffff,
-            0 0 10px #00ffff,
-            0 0 15px #00ffff;
+            0 0 5px var(--accent-primary),
+            0 0 10px var(--accent-primary),
+            0 0 15px var(--accent-primary);
     }
 }
 
@@ -167,12 +209,12 @@ body {
 .test-options {
     margin-bottom: 2rem;
     padding: 1rem;
-    border: 1px solid #00ffff;
+    border: 1px solid var(--border-primary);
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.6);
+    background: var(--bg-secondary);
     box-shadow: 
-        0 0 15px rgba(0, 255, 255, 0.2),
-        inset 0 0 15px rgba(0, 255, 255, 0.05);
+        0 0 15px var(--shadow-primary),
+        inset 0 0 15px var(--shadow-secondary);
     backdrop-filter: blur(10px);
 }
 
@@ -191,11 +233,11 @@ body {
 .option-description {
     display: block;
     font-size: 0.8rem;
-    color: #666;
+    color: var(--text-tertiary);
     text-align: center;
     margin-top: 0.5rem;
     font-style: italic;
-    text-shadow: 0 0 3px #666;
+    text-shadow: 0 0 3px var(--text-tertiary);
 }
 
 .time-options, .type-options, .focus-options {
@@ -212,29 +254,55 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border: 1px solid #00ffff;
+    border: 1px solid var(--border-primary);
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
     background: transparent;
-    color: #00ffff;
-    text-shadow: 0 0 5px #00ffff;
-    box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+    color: var(--accent-primary);
+    text-shadow: 0 0 5px var(--accent-primary);
+    box-shadow: 0 0 8px var(--shadow-primary);
 }
 
 .time-btn:hover, .type-btn:hover, .difficulty-btn:hover, .focus-btn:hover {
-    background: rgba(0, 255, 255, 0.1);
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    background: var(--shadow-secondary);
+    box-shadow: 0 0 15px var(--shadow-glow);
     transform: translateY(-2px);
 }
 
 .time-btn.active, .type-btn.active, .difficulty-btn.active, .focus-btn.active {
-    background: rgba(0, 255, 255, 0.2);
+    background: var(--shadow-secondary);
     box-shadow: 
-        0 0 20px rgba(0, 255, 255, 0.5),
-        inset 0 0 10px rgba(0, 255, 255, 0.2);
+        0 0 20px var(--shadow-glow),
+        inset 0 0 10px var(--shadow-secondary);
     color: #fff;
     text-shadow: 0 0 10px #fff;
+}
+
+/* Light theme specific styling for active buttons */
+[data-theme="light"] .time-btn.active, 
+[data-theme="light"] .type-btn.active, 
+[data-theme="light"] .difficulty-btn.active, 
+[data-theme="light"] .focus-btn.active {
+    color: #ff8c00;
+    text-shadow: 0 0 10px #ff8c00;
+}
+
+/* Light theme specific styling for descriptive text */
+[data-theme="light"] .subtitle-secondary {
+    color: #ffd700;
+    text-shadow: 0 0 5px #ffd700;
+}
+
+/* Light theme specific styling for placeholder text */
+[data-theme="light"] #textInput::placeholder {
+    color: #ff8c00;
+}
+
+/* Light theme specific styling for text prompt */
+[data-theme="light"] .text-prompt {
+    color: #ff8c00;
+    text-shadow: 0 0 5px #ff8c00;
 }
 
 .word-count-input {
@@ -245,17 +313,17 @@ body {
 }
 
 .neo-input {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid #00ffff;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-primary);
     border-radius: 8px;
     padding: 0.5rem 1rem;
     font-family: 'Orbitron', monospace;
     font-size: 1rem;
-    color: #00ffff;
-    text-shadow: 0 0 5px #00ffff;
+    color: var(--accent-primary);
+    text-shadow: 0 0 5px var(--accent-primary);
     box-shadow: 
-        0 0 10px rgba(0, 255, 255, 0.3),
-        inset 0 0 10px rgba(0, 255, 255, 0.1);
+        0 0 10px var(--shadow-primary),
+        inset 0 0 10px var(--shadow-secondary);
     backdrop-filter: blur(5px);
     outline: none;
     transition: all 0.3s ease;
@@ -264,15 +332,15 @@ body {
 }
 
 .neo-input:focus {
-    border-color: #00ffff;
+    border-color: var(--border-primary);
     box-shadow: 
-        0 0 20px rgba(0, 255, 255, 0.5),
-        inset 0 0 20px rgba(0, 255, 255, 0.2);
+        0 0 20px var(--shadow-primary),
+        inset 0 0 20px var(--shadow-secondary);
 }
 
 .input-label {
     font-size: 0.9rem;
-    color: #888;
+    color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -288,26 +356,26 @@ body {
 .stat {
     text-align: center;
     padding: 1rem 2rem;
-    border: 2px solid #00ffff;
+    border: 2px solid var(--border-primary);
     border-radius: 10px;
-    background: rgba(0, 255, 255, 0.05);
+    background: var(--shadow-secondary);
     box-shadow: 
-        0 0 10px rgba(0, 255, 255, 0.3),
-        inset 0 0 10px rgba(0, 255, 255, 0.1);
+        0 0 10px var(--shadow-primary),
+        inset 0 0 10px var(--shadow-secondary);
     backdrop-filter: blur(5px);
 }
 
 .stat-value {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
+    color: var(--accent-primary);
+    text-shadow: 0 0 10px var(--accent-primary);
     margin-bottom: 0.5rem;
 }
 
 .stat-label {
     font-size: 0.9rem;
-    color: #888;
+    color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -325,26 +393,26 @@ body {
     font-family: 'Orbitron', monospace;
     font-size: 1rem;
     font-weight: 600;
-    color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
+    color: var(--accent-primary);
+    text-shadow: 0 0 10px var(--accent-primary);
     letter-spacing: 1px;
     padding-left: 0.5rem;
 }
 
 .text-display {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid #00ffff;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-primary);
     border-radius: 10px;
     padding: 2rem;
     margin-bottom: 1rem;
     min-height: 200px;
     font-size: 1.6rem;
     line-height: 2.2;
-    color: #00ffff;
-    text-shadow: 0 0 5px #00ffff;
+    color: var(--accent-primary);
+    text-shadow: 0 0 5px var(--accent-primary);
     box-shadow: 
-        0 0 20px rgba(0, 255, 255, 0.2),
-        inset 0 0 20px rgba(0, 255, 255, 0.05);
+        0 0 20px var(--shadow-primary),
+        inset 0 0 20px var(--shadow-secondary);
     backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
@@ -396,7 +464,7 @@ body {
 }
 
 .text-prompt {
-    color: #888;
+    color: var(--text-secondary);
     font-style: italic;
 }
 
@@ -412,47 +480,58 @@ body {
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
 }
 
+/* Light theme specific styling for future text */
+[data-theme="light"] .future {
+    color: rgba(255, 215, 0, 0.6);
+    text-shadow: 0 0 3px rgba(255, 215, 0, 0.3);
+}
+
+[data-theme="light"] .future:hover {
+    opacity: 0.8;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
 .correct {
-    color: #00ffff;
-    text-shadow: 0 0 8px #00ffff; /* Primary blue glow */
+    color: var(--accent-primary);
+    text-shadow: 0 0 8px var(--accent-primary); /* Primary blue glow */
     font-weight: 600;
     transition: all 0.2s ease;
 }
 
 .incorrect {
-    color: #ff0000;
-    text-shadow: 0 0 8px #ff0000; /* Red glow */
+    color: var(--error-color);
+    text-shadow: 0 0 8px var(--error-color); /* Red glow */
     text-decoration: underline;
     font-weight: 600;
     transition: all 0.2s ease;
 }
 
 .current {
-    background: rgba(0, 255, 255, 0.3);
+    background: var(--shadow-secondary);
     border-radius: 4px;
     animation: blink 1s infinite;
     font-weight: 700;
-    text-shadow: 0 0 10px #00ffff;
+    text-shadow: 0 0 10px var(--accent-primary);
 }
 
 @keyframes blink {
-    0%, 50% { background: rgba(0, 255, 255, 0.2); }
-    51%, 100% { background: rgba(0, 255, 255, 0.4); }
+    0%, 50% { background: var(--shadow-secondary); }
+    51%, 100% { background: var(--shadow-primary); }
 }
 
 #textInput {
     width: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid #00ffff;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-primary);
     border-radius: 10px;
     padding: 1rem;
     font-family: 'Orbitron', monospace;
     font-size: 1.1rem;
-    color: #00ffff;
-    text-shadow: 0 0 5px #00ffff;
+    color: var(--accent-primary);
+    text-shadow: 0 0 5px var(--accent-primary);
     box-shadow: 
-        0 0 15px rgba(0, 255, 255, 0.3),
-        inset 0 0 15px rgba(0, 255, 255, 0.1);
+        0 0 15px var(--shadow-primary),
+        inset 0 0 15px var(--shadow-secondary);
     backdrop-filter: blur(10px);
     resize: none;
     outline: none;
@@ -460,14 +539,14 @@ body {
 }
 
 #textInput:focus {
-    border-color: #00ffff;
+    border-color: var(--border-primary);
     box-shadow: 
-        0 0 25px rgba(0, 255, 255, 0.5),
-        inset 0 0 25px rgba(0, 255, 255, 0.2);
+        0 0 25px var(--shadow-primary),
+        inset 0 0 25px var(--shadow-secondary);
 }
 
 #textInput::placeholder {
-    color: #666;
+    color: var(--text-tertiary);
 }
 
 /* Controls */
@@ -511,36 +590,36 @@ body {
 }
 
 .btn-primary {
-    border-color: #00ffff;
-    color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
+    border-color: var(--border-primary);
+    color: var(--accent-primary);
+    text-shadow: 0 0 10px var(--accent-primary);
     box-shadow: 
-        0 0 15px rgba(0, 255, 255, 0.3),
-        inset 0 0 15px rgba(0, 255, 255, 0.1);
+        0 0 15px var(--shadow-primary),
+        inset 0 0 15px var(--shadow-secondary);
 }
 
 .btn-primary:hover {
-    background: rgba(0, 255, 255, 0.1);
+    background: var(--shadow-secondary);
     box-shadow: 
-        0 0 25px rgba(0, 255, 255, 0.5),
-        inset 0 0 25px rgba(0, 255, 255, 0.2);
+        0 0 25px var(--shadow-glow),
+        inset 0 0 25px var(--shadow-secondary);
     transform: translateY(-2px);
 }
 
 .btn-secondary {
-    border-color: #ff00ff;
-    color: #ff00ff;
-    text-shadow: 0 0 10px #ff00ff;
+    border-color: var(--accent-secondary);
+    color: var(--accent-secondary);
+    text-shadow: 0 0 10px var(--accent-secondary);
     box-shadow: 
         0 0 15px rgba(255, 0, 255, 0.3),
         inset 0 0 15px rgba(255, 0, 255, 0.1);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 0, 255, 0.1);
+    background: var(--shadow-secondary);
     box-shadow: 
-        0 0 25px rgba(255, 0, 255, 0.5),
-        inset 0 0 25px rgba(255, 0, 255, 0.2);
+        0 0 25px var(--shadow-glow),
+        inset 0 0 25px var(--shadow-secondary);
     transform: translateY(-2px);
 }
 
@@ -548,19 +627,19 @@ body {
 .results {
     text-align: center;
     padding: 2rem;
-    border: 2px solid #00ffff;
+    border: 2px solid var(--border-primary);
     border-radius: 15px;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--bg-tertiary);
     box-shadow: 
-        0 0 30px rgba(0, 255, 255, 0.3),
-        inset 0 0 30px rgba(0, 255, 255, 0.1);
+        0 0 30px var(--shadow-primary),
+        inset 0 0 30px var(--shadow-secondary);
     backdrop-filter: blur(15px);
 }
 
 .results-title {
     font-size: 2rem;
     margin-bottom: 2rem;
-    text-shadow: 0 0 15px #00ffff;
+    text-shadow: 0 0 15px var(--accent-primary);
 }
 
 .results-grid {
@@ -572,23 +651,23 @@ body {
 
 .result-item {
     padding: 1.5rem;
-    border: 1px solid #00ffff;
+    border: 1px solid var(--border-primary);
     border-radius: 10px;
-    background: rgba(0, 255, 255, 0.05);
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    background: var(--shadow-secondary);
+    box-shadow: 0 0 15px var(--shadow-primary);
 }
 
 .result-value {
     font-size: 2rem;
     font-weight: 700;
-    color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
+    color: var(--accent-primary);
+    text-shadow: 0 0 10px var(--accent-primary);
     margin-bottom: 0.5rem;
 }
 
 .result-label {
     font-size: 0.9rem;
-    color: #888;
+    color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -657,10 +736,10 @@ body {
     display: inline-block;
     width: 3px;
     height: 1.4em;
-    background: #ffff00;
+    background: var(--accent-highlight);
     animation: cursor-blink 1s infinite;
     margin-left: 3px;
-    box-shadow: 0 0 8px #ffff00;
+    box-shadow: 0 0 8px var(--accent-highlight);
     border-radius: 1px;
 }
 
@@ -674,7 +753,7 @@ body {
     display: inline-block;
     width: 20px;
     height: 20px;
-    border: 2px solid #00ffff;
+    border: 2px solid var(--accent-primary);
     border-radius: 50%;
     border-top-color: transparent;
     animation: spin 1s linear infinite;
@@ -691,33 +770,33 @@ body {
     text-align: center;
     margin: 2rem 0;
     padding: 1.5rem;
-    border: 3px solid #ffff00;
+    border: 3px solid var(--accent-highlight);
     border-radius: 15px;
-    background: rgba(255, 255, 0, 0.1);
+    background: var(--shadow-secondary);
     box-shadow: 
-        0 0 30px rgba(255, 255, 0, 0.3),
-        inset 0 0 30px rgba(255, 255, 0, 0.1);
+        0 0 30px var(--shadow-glow),
+        inset 0 0 30px var(--shadow-secondary);
     animation: high-score-glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes high-score-glow {
     0% { 
         box-shadow: 
-            0 0 30px rgba(255, 255, 0, 0.3),
-            inset 0 0 30px rgba(255, 255, 0, 0.1);
+            0 0 30px var(--shadow-glow),
+            inset 0 0 30px var(--shadow-secondary);
     }
     100% { 
         box-shadow: 
-            0 0 50px rgba(255, 255, 0, 0.5),
-            inset 0 0 50px rgba(255, 255, 0, 0.2);
+            0 0 50px var(--shadow-glow),
+            inset 0 0 50px var(--shadow-secondary);
     }
 }
 
 .high-score-text {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #ffff00;
-    text-shadow: 0 0 15px #ffff00;
+    color: var(--accent-highlight);
+    text-shadow: 0 0 15px var(--accent-highlight);
     margin-bottom: 1rem;
     animation: text-bounce 1s ease-in-out infinite alternate;
 }
@@ -730,16 +809,16 @@ body {
 .high-score-value {
     font-size: 3rem;
     font-weight: 900;
-    color: #ffff00;
+    color: var(--accent-highlight);
     text-shadow: 
-        0 0 20px #ffff00,
-        0 0 40px #ffff00;
+        0 0 20px var(--accent-highlight),
+        0 0 40px var(--accent-highlight);
     animation: number-pulse 0.5s ease-in-out infinite alternate;
 }
 
 @keyframes number-pulse {
-    0% { text-shadow: 0 0 20px #ffff00, 0 0 40px #ffff00; }
-    100% { text-shadow: 0 0 30px #ffff00, 0 0 60px #ffff00; }
+    0% { text-shadow: 0 0 20px var(--accent-highlight), 0 0 40px var(--accent-highlight); }
+    100% { text-shadow: 0 0 30px var(--accent-highlight), 0 0 60px var(--accent-highlight); }
 }
 
 
@@ -935,7 +1014,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--bg-tertiary);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
@@ -944,39 +1023,39 @@ body {
 }
 
 .popup-content {
-    background: rgba(0, 0, 0, 0.9);
-    border: 2px solid #00ffff;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-primary);
     border-radius: 15px;
     padding: 2rem;
     max-width: 500px;
     text-align: center;
     box-shadow: 
-        0 0 30px rgba(0, 255, 255, 0.5),
-        inset 0 0 30px rgba(0, 255, 255, 0.1);
+        0 0 30px var(--shadow-primary),
+        inset 0 0 30px var(--shadow-secondary);
     backdrop-filter: blur(10px);
 }
 
 .popup-content h3 {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #00ffff;
+    color: var(--accent-primary);
     text-shadow: 
-        0 0 10px #00ffff,
-        0 0 20px #00ffff;
+        0 0 10px var(--accent-primary),
+        0 0 20px var(--accent-primary);
     margin-bottom: 1rem;
 }
 
 .popup-content p {
     font-size: 1rem;
-    color: #ccc;
+    color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 1rem;
-    text-shadow: 0 0 5px #ccc;
+    text-shadow: 0 0 5px var(--text-secondary);
 }
 
 .popup-content strong {
-    color: #00ffff;
-    text-shadow: 0 0 5px #00ffff;
+    color: var(--accent-primary);
+    text-shadow: 0 0 5px var(--accent-primary);
 }
 
 .popup-buttons {
@@ -991,6 +1070,40 @@ body {
     font-size: 0.9rem;
 }
 
+/* Theme Toggle Styles */
+.theme-toggle {
+    margin-right: 1rem;
+}
+
+.theme-btn {
+    background: transparent;
+    border: 2px solid var(--border-primary);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px var(--shadow-primary);
+    backdrop-filter: blur(5px);
+}
+
+.theme-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--shadow-glow);
+}
+
+.theme-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.theme-btn:hover .theme-icon {
+    transform: rotate(180deg);
+}
+
 /* Top Navigation Styles */
 .top-nav {
     display: flex;
@@ -998,17 +1111,17 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     margin-bottom: 2rem;
-    border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+    border-bottom: 1px solid var(--border-secondary);
 }
 
 .nav-left .title {
     font-size: 2rem;
     font-weight: 900;
-    color: #00ffff;
+    color: var(--accent-primary);
     text-shadow: 
-        0 0 5px #00ffff,
-        0 0 10px #00ffff,
-        0 0 15px #00ffff;
+        0 0 5px var(--accent-primary),
+        0 0 10px var(--accent-primary),
+        0 0 15px var(--accent-primary);
     margin: 0;
 }
 
@@ -1028,10 +1141,10 @@ body {
     display: inline-block;
     padding: 0.8rem 1.5rem;
     border-radius: 15px;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--bg-tertiary);
     box-shadow: 
-        0 0 20px rgba(0, 255, 255, 0.2),
-        inset 0 0 20px rgba(0, 255, 255, 0.05);
+        0 0 20px var(--shadow-primary),
+        inset 0 0 20px var(--shadow-secondary);
     backdrop-filter: blur(10px);
 }
 
@@ -1058,14 +1171,14 @@ body {
 .username {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
+    color: var(--accent-primary);
+    text-shadow: 0 0 10px var(--accent-primary);
 }
 
 .user-email {
     font-size: 0.9rem;
-    color: #888;
-    text-shadow: 0 0 5px #888;
+    color: var(--text-secondary);
+    text-shadow: 0 0 5px var(--text-secondary);
 }
 
 .user-actions {
@@ -1077,12 +1190,12 @@ body {
 .profile-section {
     margin-top: 3rem;
     padding: 2rem;
-    border: 2px solid #00ffff;
+    border: 2px solid var(--border-primary);
     border-radius: 15px;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--bg-tertiary);
     box-shadow: 
-        0 0 30px rgba(0, 255, 255, 0.3),
-        inset 0 0 30px rgba(0, 255, 255, 0.1);
+        0 0 30px var(--shadow-primary),
+        inset 0 0 30px var(--shadow-secondary);
     backdrop-filter: blur(10px);
 }
 
@@ -1090,10 +1203,10 @@ body {
     font-size: 2.5rem;
     font-weight: 900;
     text-align: center;
-    color: #00ffff;
+    color: var(--accent-primary);
     text-shadow: 
-        0 0 10px #00ffff,
-        0 0 20px #00ffff;
+        0 0 10px var(--accent-primary),
+        0 0 20px var(--accent-primary);
     margin-bottom: 2rem;
 }
 
@@ -1112,17 +1225,17 @@ body {
 
 .stat-card {
     padding: 1.5rem;
-    border: 1px solid #00ffff;
+    border: 1px solid var(--border-primary);
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    background: var(--bg-secondary);
+    box-shadow: 0 0 15px var(--shadow-primary);
 }
 
 .stat-card h3 {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
+    color: var(--accent-primary);
+    text-shadow: 0 0 10px var(--accent-primary);
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -1138,30 +1251,30 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem;
-    border: 1px solid rgba(0, 255, 255, 0.3);
+    border: 1px solid var(--border-secondary);
     border-radius: 5px;
-    background: rgba(0, 0, 0, 0.3);
+    background: var(--bg-secondary);
 }
 
 .best-label {
     font-size: 0.9rem;
-    color: #ccc;
-    text-shadow: 0 0 5px #ccc;
+    color: var(--text-secondary);
+    text-shadow: 0 0 5px var(--text-secondary);
 }
 
 .best-value {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
+    color: var(--accent-primary);
+    text-shadow: 0 0 10px var(--accent-primary);
 }
 
 .chart-container {
     width: 100%;
     height: 200px;
-    border: 1px solid rgba(0, 255, 255, 0.3);
+    border: 1px solid var(--border-secondary);
     border-radius: 5px;
-    background: rgba(0, 0, 0, 0.3);
+    background: var(--bg-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1227,7 +1340,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--bg-tertiary);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
@@ -1236,26 +1349,26 @@ body {
 }
 
 .modal-content {
-    background: rgba(0, 0, 0, 0.9);
-    border: 2px solid #00ffff;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-primary);
     border-radius: 15px;
     padding: 2rem;
     max-width: 400px;
     width: 90%;
     text-align: center;
     box-shadow: 
-        0 0 30px rgba(0, 255, 255, 0.5),
-        inset 0 0 30px rgba(0, 255, 255, 0.1);
+        0 0 30px var(--shadow-primary),
+        inset 0 0 30px var(--shadow-secondary);
     backdrop-filter: blur(10px);
 }
 
 .modal-content h3 {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #00ffff;
+    color: var(--accent-primary);
     text-shadow: 
-        0 0 10px #00ffff,
-        0 0 20px #00ffff;
+        0 0 10px var(--accent-primary),
+        0 0 20px var(--accent-primary);
     margin-bottom: 1.5rem;
 }
 
@@ -1267,9 +1380,9 @@ body {
 .form-group label {
     display: block;
     font-size: 0.9rem;
-    color: #ccc;
+    color: var(--text-secondary);
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 5px #ccc;
+    text-shadow: 0 0 5px var(--text-secondary);
 }
 
 .neo-input {
@@ -1277,20 +1390,20 @@ body {
     padding: 0.8rem;
     font-family: 'Orbitron', monospace;
     font-size: 1rem;
-    background: rgba(0, 0, 0, 0.5);
-    border: 2px solid #00ffff;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-primary);
     border-radius: 8px;
-    color: #00ffff;
-    text-shadow: 0 0 5px #00ffff;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    color: var(--accent-primary);
+    text-shadow: 0 0 5px var(--accent-primary);
+    box-shadow: 0 0 10px var(--shadow-primary);
     transition: all 0.3s ease;
     text-align: left;
 }
 
 .neo-input:focus {
     outline: none;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-    border-color: #00ffff;
+    box-shadow: 0 0 15px var(--shadow-primary);
+    border-color: var(--border-primary);
 }
 
 .social-login {
@@ -1324,15 +1437,15 @@ body {
 }
 
 .auth-card {
-    background: rgba(0, 0, 0, 0.9);
-    border: 2px solid #00ffff;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-primary);
     border-radius: 15px;
     padding: 2.5rem;
     max-width: 500px;
     width: 100%;
     box-shadow: 
-        0 0 30px rgba(0, 255, 255, 0.3),
-        inset 0 0 30px rgba(0, 255, 255, 0.1);
+        0 0 30px var(--shadow-primary),
+        inset 0 0 30px var(--shadow-secondary);
     backdrop-filter: blur(10px);
 }
 
@@ -1340,19 +1453,19 @@ body {
     font-size: 2.5rem;
     font-weight: 900;
     text-align: center;
-    color: #00ffff;
+    color: var(--accent-primary);
     text-shadow: 
-        0 0 10px #00ffff,
-        0 0 20px #00ffff;
+        0 0 10px var(--accent-primary),
+        0 0 20px var(--accent-primary);
     margin-bottom: 0.5rem;
 }
 
 .auth-subtitle {
     font-size: 1rem;
     text-align: center;
-    color: #888;
+    color: var(--text-secondary);
     margin-bottom: 2rem;
-    text-shadow: 0 0 5px #888;
+    text-shadow: 0 0 5px var(--text-secondary);
     line-height: 1.5;
     max-width: 400px;
     margin-left: auto;
@@ -1374,15 +1487,15 @@ body {
     padding: 1rem;
     font-size: 1rem;
     font-weight: 600;
-    border: 2px solid #00ffff;
+    border: 2px solid var(--border-primary);
     background: transparent;
-    color: #00ffff;
+    color: var(--accent-primary);
     transition: all 0.3s ease;
 }
 
 .social-btn:hover {
-    background: rgba(0, 255, 255, 0.1);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+    background: var(--shadow-secondary);
+    box-shadow: 0 0 20px var(--shadow-glow);
     transform: translateY(-2px);
 }
 
@@ -1405,13 +1518,13 @@ body {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, #00ffff, transparent);
+    background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
 }
 
 .divider span {
-    background: rgba(0, 0, 0, 0.9);
+    background: var(--bg-tertiary);
     padding: 0 1rem;
-    color: #888;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -1431,15 +1544,15 @@ body {
 
 .form-group label {
     font-size: 0.9rem;
-    color: #ccc;
-    text-shadow: 0 0 5px #ccc;
+    color: var(--text-secondary);
+    text-shadow: 0 0 5px var(--text-secondary);
     font-weight: 600;
 }
 
 .form-hint {
     font-size: 0.8rem;
-    color: #666;
-    text-shadow: 0 0 3px #666;
+    color: var(--text-tertiary);
+    text-shadow: 0 0 3px var(--text-tertiary);
     font-style: italic;
 }
 
@@ -1460,16 +1573,16 @@ body {
 }
 
 .auth-link {
-    color: #00ffff;
+    color: var(--accent-primary);
     text-decoration: none;
     font-size: 0.9rem;
-    text-shadow: 0 0 5px #00ffff;
+    text-shadow: 0 0 5px var(--accent-primary);
     transition: all 0.3s ease;
 }
 
 .auth-link:hover {
     color: #fff;
-    text-shadow: 0 0 10px #00ffff;
+    text-shadow: 0 0 10px var(--accent-primary);
 }
 
 .title-link {
@@ -1479,7 +1592,7 @@ body {
 
 .title-link:hover .title {
     text-shadow: 
-        0 0 10px #00ffff,
-        0 0 20px #00ffff,
-        0 0 30px #00ffff;
+        0 0 10px var(--accent-primary),
+        0 0 20px var(--accent-primary),
+        0 0 30px var(--accent-primary);
 }

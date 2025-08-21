@@ -1,5 +1,11 @@
 class TypingTest {
     constructor() {
+        // Initialize theme
+        this.initializeTheme();
+        
+        // Theme management methods
+        this.setupThemeToggle();
+        
         // Chill mode: Simple words, no punctuation
         this.chillTexts = [
             "The quick brown fox jumps over the lazy dog. This sentence has simple words that are easy to type.",
@@ -926,6 +932,49 @@ class TypingTest {
         this.resetTest();
         this.startTest();
     }
+    
+    // Theme management methods
+    initializeTheme() {
+        // Check for saved theme preference or default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        this.updateThemeIcon(savedTheme);
+    }
+    
+    setupThemeToggle() {
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                this.toggleTheme();
+            });
+        }
+    }
+    
+    toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        this.updateThemeIcon(newTheme);
+        
+        // Update particle colors for light theme
+        this.updateParticleColors(newTheme);
+    }
+    
+    updateThemeIcon(theme) {
+        const themeIcon = document.querySelector('.theme-icon');
+        if (themeIcon) {
+            themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+        }
+    }
+    
+    updateParticleColors(theme) {
+        // Update particle colors based on theme
+        if (window.redrawParticles) {
+            window.redrawParticles();
+        }
+    }
 }
 
 // Initialize the typing test when the page loads
@@ -951,6 +1000,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const particles = [];
     const particleCount = 50;
     
+    // Function to get theme-aware particle color
+    function getParticleColor() {
+        const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+        return theme === 'dark' ? '#00ffff' : '#ffd700';
+    }
+    
     class Particle {
         constructor() {
             this.x = Math.random() * canvas.width;
@@ -972,9 +1027,10 @@ document.addEventListener('DOMContentLoaded', () => {
         draw() {
             ctx.save();
             ctx.globalAlpha = this.opacity;
-            ctx.fillStyle = '#00ffff';
+            const particleColor = getParticleColor();
+            ctx.fillStyle = particleColor;
             ctx.shadowBlur = 10;
-            ctx.shadowColor = '#00ffff';
+            ctx.shadowColor = particleColor;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
@@ -997,6 +1053,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
         requestAnimationFrame(animate);
     }
+    
+    // Store animation function globally for theme updates
+    window.redrawParticles = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(particle => {
+            particle.draw();
+        });
+    };
     
     animate();
     
