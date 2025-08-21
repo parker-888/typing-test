@@ -223,17 +223,17 @@ class TypingTest {
     enableMobileViewport() {
         if (!this.isMobile) return;
         
-        // Set viewport to prevent zooming and ensure consistent sizing
+        // Set viewport to prevent zooming but allow normal scrolling
         const viewportMeta = document.querySelector('meta[name="viewport"]');
         if (viewportMeta) {
-            viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
+            viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
         }
         
         // Scroll to text display area and ensure it's visible
         if (this.textDisplay) {
             this.textDisplay.scrollIntoView({ 
                 behavior: 'smooth', 
-                block: 'center',
+                block: 'start',
                 inline: 'nearest'
             });
             
@@ -243,11 +243,8 @@ class TypingTest {
             }, 300);
         }
         
-        // Prevent body scrolling during test
+        // Only prevent body scrolling, don't fix position
         document.body.style.overflow = 'hidden';
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
-        document.body.style.height = '100%';
     }
     
     disableMobileViewport() {
@@ -261,9 +258,6 @@ class TypingTest {
         
         // Restore body scrolling
         document.body.style.overflow = '';
-        document.body.style.position = '';
-        document.body.style.width = '';
-        document.body.style.height = '';
     }
     
     ensureTextDisplayVisible() {
@@ -273,10 +267,10 @@ class TypingTest {
         const viewportHeight = window.innerHeight;
         
         // If text display is not fully visible, adjust scroll
-        if (rect.top < 50 || rect.bottom > viewportHeight - 100) {
+        if (rect.top < 20 || rect.bottom > viewportHeight - 150) {
             this.textDisplay.scrollIntoView({ 
                 behavior: 'smooth', 
-                block: 'center',
+                block: 'start',
                 inline: 'nearest'
             });
         }
@@ -567,6 +561,15 @@ class TypingTest {
         this.textInput.focus();
         this.startBtn.disabled = true;
         this.results.style.display = 'none';
+        
+        // Mobile: Ensure text display is visible and properly sized
+        if (this.isMobile && this.textDisplay) {
+            this.textDisplay.style.display = 'block';
+            this.textDisplay.style.visibility = 'visible';
+            this.textDisplay.style.opacity = '1';
+            this.textDisplay.style.transform = 'none';
+            this.textDisplay.style.filter = 'none';
+        }
         
         // Add test-active class for enhanced text display
         if (this.textDisplay) {

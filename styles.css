@@ -439,10 +439,20 @@ body {
 
 @media (max-width: 480px) {
     .text-display.test-active {
-        font-size: 1.5rem;
-        line-height: 2.2;
-        min-height: 200px;
+        font-size: 1.4rem;
+        line-height: 1.8;
+        min-height: 180px;
         padding: 1.5rem;
+        background: rgba(0, 0, 0, 0.95) !important;
+        border: 2px solid #00ffff !important;
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.4) !important;
+    }
+    
+    .text-display {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        min-height: 150px;
+        padding: 1rem;
     }
 }
 
@@ -705,29 +715,47 @@ body {
     /* Mobile-specific viewport management */
     body.test-active {
         overflow: hidden !important;
-        position: fixed !important;
-        width: 100% !important;
-        height: 100% !important;
         -webkit-overflow-scrolling: touch;
     }
     
     .text-display.test-active {
-        position: sticky;
-        top: 0;
+        position: relative;
         z-index: 100;
         margin-bottom: 1rem;
+        font-size: 1.4rem !important;
+        line-height: 1.8 !important;
+        min-height: 180px !important;
+        padding: 1.5rem !important;
+        background: rgba(0, 0, 0, 0.9) !important;
+        border: 2px solid #00ffff !important;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3) !important;
     }
     
     #textInput {
-        position: sticky;
-        bottom: 0;
+        position: relative;
         z-index: 100;
         margin-top: 1rem;
+        font-size: 16px !important;
     }
     
     /* Prevent zoom on input focus */
     input, textarea, select {
         font-size: 16px !important;
+    }
+    
+    /* Ensure text display is always visible and not blurred */
+    .text-display {
+        transform: none !important;
+        filter: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .text-display.test-active {
+        transform: none !important;
+        filter: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 }
 
