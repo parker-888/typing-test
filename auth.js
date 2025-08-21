@@ -1,8 +1,7 @@
 // Supabase Configuration
-// Replace these values with your actual Supabase project credentials
-// You can find these in your Supabase dashboard under Settings > API
-const SUPABASE_URL = 'YOUR_ACTUAL_SUPABASE_URL';
-const SUPABASE_ANON_KEY = 'YOUR_ACTUAL_SUPABASE_ANON_KEY';
+// Load credentials from environment variables or config
+const SUPABASE_URL = window.config?.SUPABASE_URL || process.env.SUPABASE_URL || '';
+const SUPABASE_ANON_KEY = window.config?.SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || '';
 
 // Validate configuration
 if (!SUPABASE_URL || !SUPABASE_ANON_KEY || SUPABASE_URL === 'YOUR_ACTUAL_SUPABASE_URL' || SUPABASE_ANON_KEY === 'YOUR_ACTUAL_SUPABASE_ANON_KEY') {
@@ -23,7 +22,6 @@ class AuthManager {
         this.currentUser = null;
         this.userProfile = null;
         this.init();
-        this.initializeTheme();
     }
 
     async init() {
@@ -462,39 +460,7 @@ class AuthManager {
         }
     }
     
-    // Theme management methods
-    initializeTheme() {
-        // Check for saved theme preference or default to dark
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        this.updateThemeIcon(savedTheme);
-        this.setupThemeToggle();
-    }
-    
-    setupThemeToggle() {
-        const themeToggle = document.getElementById('themeToggle');
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                this.toggleTheme();
-            });
-        }
-    }
-    
-    toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        this.updateThemeIcon(newTheme);
-    }
-    
-    updateThemeIcon(theme) {
-        const themeIcon = document.querySelector('.theme-icon');
-        if (themeIcon) {
-            themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
-        }
-    }
+
 }
 
 // Initialize auth manager
