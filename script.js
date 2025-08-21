@@ -180,8 +180,100 @@ class TypingTest {
         this.correctTyped = 0;
         this.wordCount = 0;
         
+        // Mobile viewport management
+        this.isMobile = this.detectMobile();
+        this.originalViewport = null;
+        this.textDisplayPosition = null;
+        
         this.initializeElements();
         this.bindEvents();
+        this.setupMobileViewport();
+    }
+    
+    detectMobile() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+               window.innerWidth <= 768;
+    }
+    
+    setupMobileViewport() {
+        if (this.isMobile) {
+            // Store original viewport meta tag
+            const viewportMeta = document.querySelector('meta[name="viewport"]');
+            if (viewportMeta) {
+                this.originalViewport = viewportMeta.getAttribute('content');
+            }
+            
+            // Store initial text display position
+            if (this.textDisplay) {
+                const rect = this.textDisplay.getBoundingClientRect();
+                this.textDisplayPosition = {
+                    top: rect.top,
+                    height: rect.height
+                };
+            }
+        }
+    }
+    
+    enableMobileViewport() {
+        if (!this.isMobile) return;
+        
+        // Set viewport to prevent zooming and ensure consistent sizing
+        const viewportMeta = document.querySelector('meta[name="viewport"]');
+        if (viewportMeta) {
+            viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
+        }
+        
+        // Scroll to text display area and ensure it's visible
+        if (this.textDisplay) {
+            this.textDisplay.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center',
+                inline: 'nearest'
+            });
+            
+            // Add a small delay to ensure the scroll completes
+            setTimeout(() => {
+                this.ensureTextDisplayVisible();
+            }, 300);
+        }
+        
+        // Prevent body scrolling during test
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.height = '100%';
+    }
+    
+    disableMobileViewport() {
+        if (!this.isMobile) return;
+        
+        // Restore original viewport settings
+        const viewportMeta = document.querySelector('meta[name="viewport"]');
+        if (viewportMeta && this.originalViewport) {
+            viewportMeta.setAttribute('content', this.originalViewport);
+        }
+        
+        // Restore body scrolling
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.height = '';
+    }
+    
+    ensureTextDisplayVisible() {
+        if (!this.isMobile || !this.textDisplay) return;
+        
+        const rect = this.textDisplay.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        
+        // If text display is not fully visible, adjust scroll
+        if (rect.top < 50 || rect.bottom > viewportHeight - 100) {
+            this.textDisplay.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center',
+                inline: 'nearest'
+            });
+        }
     }
     
     initializeElements() {
@@ -218,6 +310,17 @@ class TypingTest {
         this.newTestBtn.addEventListener('click', () => this.newTest());
         this.textInput.addEventListener('input', (e) => this.handleInput(e));
         this.textInput.addEventListener('keydown', (e) => this.handleKeydown(e));
+        
+        // Mobile: Handle focus events for better positioning
+        if (this.isMobile) {
+            this.textInput.addEventListener('focus', () => {
+                if (this.isRunning) {
+                    setTimeout(() => {
+                        this.ensureTextDisplayVisible();
+                    }, 300);
+                }
+            });
+        }
         
         // Test options events
         this.timeButtons.forEach(btn => {
@@ -262,6 +365,29 @@ class TypingTest {
             this.wordCountInput.addEventListener('change', (e) => {
                 this.targetWords = parseInt(e.target.value) || 50;
             });
+        }
+        
+        // Mobile viewport management events
+        if (this.isMobile) {
+            // Handle viewport changes (keyboard appearance, orientation change)
+            window.addEventListener('resize', () => {
+                if (this.isRunning) {
+                    setTimeout(() => {
+                        this.ensureTextDisplayVisible();
+                    }, 100);
+                }
+            });
+            
+            // Handle virtual keyboard events
+            if (window.visualViewport) {
+                window.visualViewport.addEventListener('resize', () => {
+                    if (this.isRunning) {
+                        setTimeout(() => {
+                            this.ensureTextDisplayVisible();
+                        }, 100);
+                    }
+                });
+            }
         }
     }
     
@@ -393,6 +519,11 @@ class TypingTest {
         this.allTexts = [];
         this.lastInputLength = 0;
         
+        // Mobile viewport management - prevent scrolling during test
+        if (this.isMobile) {
+            this.enableMobileViewport();
+        }
+        
         // Set up test based on type
         if (this.testType === 'timed') {
             this.timeLeft = this.testDuration;
@@ -435,6 +566,11 @@ class TypingTest {
         if (this.textDisplay) {
             this.textDisplay.classList.add('test-active');
             console.log('Text display enhanced');
+        }
+        
+        // Add test-active class to body for mobile viewport management
+        if (this.isMobile) {
+            document.body.classList.add('test-active');
         }
         
         // Hide WPM, Accuracy, and Time stats during test, show minimal timer
@@ -600,6 +736,11 @@ class TypingTest {
         // Update display
         this.updateTextDisplay(input);
         
+        // Mobile: Ensure text display stays visible during typing
+        if (this.isMobile) {
+            this.ensureTextDisplayVisible();
+        }
+        
         // Update word count display
         if (this.testType === 'words') {
             if (this.wordCountDisplay) this.wordCountDisplay.textContent = this.wordCount;
@@ -693,6 +834,11 @@ class TypingTest {
         this.textInput.disabled = true;
         this.startBtn.disabled = false;
         
+        // Mobile viewport management - restore normal viewport
+        if (this.isMobile) {
+            this.disableMobileViewport();
+        }
+        
         this.showResults();
     }
     
@@ -731,6 +877,11 @@ class TypingTest {
         clearInterval(this.timer);
         clearInterval(this.statsTimer);
         
+        // Mobile viewport management - restore normal viewport
+        if (this.isMobile) {
+            this.disableMobileViewport();
+        }
+        
         this.textInput.value = '';
         this.textInput.disabled = true;
         this.startBtn.disabled = false;
@@ -748,6 +899,9 @@ class TypingTest {
             this.textDisplay.classList.remove('test-active');
             console.log('Text display reset to normal');
         }
+        
+        // Remove test-active class from body
+        document.body.classList.remove('test-active');
         
         // Show WPM, Accuracy, and Time stats again, hide minimal timer
         if (this.wpmDisplay) this.wpmDisplay.parentElement.style.display = 'block';
