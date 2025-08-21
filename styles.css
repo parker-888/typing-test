@@ -93,6 +93,12 @@ body {
     margin: 0 auto;
 }
 
+/* Dark theme specific styling for descriptive text */
+[data-theme="dark"] .subtitle-secondary {
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff;
+}
+
 /* Features Section - Hidden for users, visible to search engines */
 .features-section {
     position: absolute;
