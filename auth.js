@@ -1,23 +1,21 @@
 // Supabase Configuration
-// Read from environment variables (set in GitHub Secrets)
-const SUPABASE_URL = process.env.SUPABASE_URL || window.ENV?.SUPABASE_URL;
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || window.ENV?.SUPABASE_ANON_KEY;
+// Replace these values with your actual Supabase project credentials
+// You can find these in your Supabase dashboard under Settings > API
+const SUPABASE_URL = 'YOUR_ACTUAL_SUPABASE_URL';
+const SUPABASE_ANON_KEY = 'YOUR_ACTUAL_SUPABASE_ANON_KEY';
 
-// Validate environment variables
-if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-    console.error('Missing Supabase environment variables. Please check your configuration.');
-    // Fallback for development - you can remove this in production
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        console.warn('Running in development mode. Please set up environment variables for production.');
-    }
+// Validate configuration
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY || SUPABASE_URL === 'YOUR_ACTUAL_SUPABASE_URL' || SUPABASE_ANON_KEY === 'YOUR_ACTUAL_SUPABASE_ANON_KEY') {
+    console.error('Missing or invalid Supabase configuration. Please update the SUPABASE_URL and SUPABASE_ANON_KEY values in auth.js');
+    console.error('You can find these values in your Supabase dashboard under Settings > API');
 }
 
 // Initialize Supabase client
 let supabase;
-if (SUPABASE_URL && SUPABASE_ANON_KEY) {
+if (SUPABASE_URL && SUPABASE_ANON_KEY && SUPABASE_URL !== 'YOUR_ACTUAL_SUPABASE_URL' && SUPABASE_ANON_KEY !== 'YOUR_ACTUAL_SUPABASE_ANON_KEY') {
     supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 } else {
-    console.error('Supabase client not initialized due to missing environment variables');
+    console.error('Supabase client not initialized due to missing or invalid configuration');
 }
 
 class AuthManager {
@@ -109,7 +107,8 @@ class AuthManager {
 
     async loginWithGoogle() {
         if (!supabase) {
-            alert('Authentication service not available. Please check your configuration.');
+            alert('Authentication service not available. Please configure your Supabase credentials in auth.js');
+            console.error('Supabase not initialized. Please check the configuration at the top of auth.js');
             return;
         }
         
@@ -129,7 +128,8 @@ class AuthManager {
 
     async loginWithGitHub() {
         if (!supabase) {
-            alert('Authentication service not available. Please check your configuration.');
+            alert('Authentication service not available. Please configure your Supabase credentials in auth.js');
+            console.error('Supabase not initialized. Please check the configuration at the top of auth.js');
             return;
         }
         
@@ -149,7 +149,8 @@ class AuthManager {
 
     async signupWithGoogle() {
         if (!supabase) {
-            alert('Authentication service not available. Please check your configuration.');
+            alert('Authentication service not available. Please configure your Supabase credentials in auth.js');
+            console.error('Supabase not initialized. Please check the configuration at the top of auth.js');
             return;
         }
         
@@ -178,7 +179,8 @@ class AuthManager {
 
     async signupWithGitHub() {
         if (!supabase) {
-            alert('Authentication service not available. Please check your configuration.');
+            alert('Authentication service not available. Please configure your Supabase credentials in auth.js');
+            console.error('Supabase not initialized. Please check the configuration at the top of auth.js');
             return;
         }
         
