@@ -6,8 +6,8 @@ class TypingTest {
         // Theme management methods
         this.setupThemeToggle();
         
-        // Chill mode: Simple words, no punctuation
-        this.chillTexts = [
+        // Chill mode: Simple words, minimal punctuation
+        this.chillTextsWithPunctuation = [
             "The quick brown fox jumps over the lazy dog. This sentence has simple words that are easy to type.",
             "Programming is fun and exciting. You can create amazing things with code and logic.",
             "The internet connects people around the world. It makes information easy to find and share.",
@@ -43,8 +43,44 @@ class TypingTest {
             "Happiness comes from within ourselves. Finding joy in simple things brings lasting peace."
         ];
         
-        // Typist mode: Normal complexity
-        this.typistTexts = [
+        this.chillTextsWithoutPunctuation = [
+            "The quick brown fox jumps over the lazy dog This sentence has simple words that are easy to type",
+            "Programming is fun and exciting You can create amazing things with code and logic",
+            "The internet connects people around the world It makes information easy to find and share",
+            "Learning new skills takes time and practice Keep trying and you will get better",
+            "Reading books helps you learn new things Every book has something interesting to discover",
+            "Music makes life more enjoyable Different songs can change your mood and energy",
+            "Friends are important in life They help you through good times and bad times",
+            "Exercise keeps your body healthy and strong It also makes you feel happy and energetic",
+            "Food gives your body energy to work and play Eating healthy food helps you stay well",
+            "Sleep helps your body rest and recover Getting enough sleep makes you feel refreshed",
+            "The sun shines bright in the sky during the day It gives us light and warmth to live",
+            "Water is essential for all living things We need to drink water every day to stay healthy",
+            "Plants grow from seeds in the ground They need sunlight and water to survive",
+            "Animals live in many different places Some live in forests while others live in oceans",
+            "People work hard to achieve their goals Success comes from dedication and effort",
+            "Technology changes the way we live New inventions make life easier and more fun",
+            "Education opens doors to new opportunities Learning never stops throughout our lives",
+            "Family provides love and support They are always there when we need them most",
+            "Nature offers beauty and peace Spending time outdoors helps us feel calm and happy",
+            "Creativity allows us to express ourselves Art and music bring joy to many people",
+            "Travel broadens our horizons Seeing new places helps us understand different cultures",
+            "Cooking brings people together Sharing meals creates lasting memories and bonds",
+            "Sports teach us teamwork and discipline Playing games helps us stay active and healthy",
+            "Science explains how the world works Research helps us discover new knowledge",
+            "History teaches us about the past Understanding history helps us plan for the future",
+            "Language connects people across cultures Words have the power to inspire and heal",
+            "Time moves forward without stopping We must use our time wisely and make it count",
+            "Dreams give us hope for the future Working toward our dreams makes life meaningful",
+            "Kindness makes the world a better place Small acts of kindness can change someone's day",
+            "Patience helps us achieve our goals Good things come to those who wait and work hard",
+            "Courage allows us to face challenges Being brave helps us overcome our fears",
+            "Wisdom comes from experience and learning Wise people make good decisions in life",
+            "Happiness comes from within ourselves Finding joy in simple things brings lasting peace"
+        ];
+        
+        // Typist mode: Normal complexity with normal punctuation
+        this.typistTextsWithPunctuation = [
             "The void is silent until a single pixel lights up. Your story begins here in the digital realm where every keystroke echoes through the matrix of possibilities.",
             "In the depths of cyberspace, where data flows like rivers of light, we navigate through streams of information, each byte a building block of our digital existence.",
             "The future is not written in stone but in code, where algorithms dance and artificial intelligence dreams of electric sheep in neon-lit cities.",
@@ -78,8 +114,42 @@ class TypingTest {
             "As we continue to explore the frontiers of digital possibility, we carry forward the torch of human curiosity, lighting the way for discoveries yet to come."
         ];
         
+        this.typistTextsWithoutPunctuation = [
+            "The void is silent until a single pixel lights up Your story begins here in the digital realm where every keystroke echoes through the matrix of possibilities",
+            "In the depths of cyberspace where data flows like rivers of light we navigate through streams of information each byte a building block of our digital existence",
+            "The future is not written in stone but in code where algorithms dance and artificial intelligence dreams of electric sheep in neon-lit cities",
+            "Through the looking glass of technology we peer into worlds both real and imagined where virtual reality blurs the lines between what is and what could be",
+            "In this age of digital transformation we are both creators and creations shaping the world around us with every line of code and every thought expressed through our fingertips",
+            "The internet is not just a network of computers but a web of human consciousness connecting minds across continents and cultures in an instant",
+            "As we type we weave stories in the fabric of the digital universe each word a pixel in the grand mosaic of human expression and technological advancement",
+            "The keyboard is our wand the screen our canvas and with every keystroke we paint pictures in the minds of those who will read our words",
+            "In the symphony of silicon and software we are the composers orchestrating the flow of information that powers our modern world",
+            "The digital age has given us the power to create connect and communicate in ways that would have seemed like magic to previous generations",
+            "Beneath the surface of every digital interface lies a world of infinite complexity where binary decisions cascade into meaningful experiences that shape our daily lives",
+            "The rhythm of innovation pulses through the veins of our technological society each breakthrough building upon the foundations laid by countless minds before us",
+            "In the grand tapestry of human achievement the digital revolution stands as a testament to our ability to transform abstract ideas into tangible realities",
+            "The boundaries between the physical and virtual worlds continue to blur creating new possibilities for human interaction and expression that were once unimaginable",
+            "Every algorithm tells a story every dataset contains a narrative waiting to be discovered by those who know how to listen to the whispers of information",
+            "The power of connectivity transcends geographical limitations allowing ideas to flow freely across borders and cultures in a global conversation",
+            "As we navigate the digital landscape we become both cartographers and explorers mapping new territories while discovering hidden treasures of knowledge",
+            "The evolution of technology mirrors the evolution of human thought each advancement reflecting our collective desire to understand and shape the world around us",
+            "In the quiet moments between keystrokes we find the space where creativity meets computation where human intuition guides digital precision",
+            "The digital realm offers us a canvas without limits where imagination becomes reality through the alchemy of code and the magic of human ingenuity",
+            "Through the lens of technology we gain new perspectives on age-old questions finding answers in the patterns that emerge from vast oceans of data",
+            "The symphony of progress plays on with each innovation adding its unique voice to the chorus of human advancement and discovery",
+            "In the space between zeros and ones we find the poetry of logic the beauty of structure and the elegance of solutions to complex problems",
+            "The digital revolution has democratized access to knowledge empowering individuals to learn create and contribute to the global conversation",
+            "As we type our thoughts into existence we participate in the ongoing creation of human culture adding our voices to the chorus of human expression",
+            "The future belongs to those who can navigate the intersection of human creativity and technological capability finding harmony between innovation and purpose",
+            "Every line of code we write becomes part of the digital DNA that shapes our collective future building the foundation for tomorrow's possibilities",
+            "The beauty of technology lies not just in what it can do but in how it amplifies our human potential and extends our reach beyond natural limitations",
+            "In the grand experiment of human progress the digital age represents our most ambitious attempt to create tools that enhance rather than replace our humanity",
+            "The stories we tell through technology become the myths and legends of our time shaping how future generations will understand our era and aspirations",
+            "As we continue to explore the frontiers of digital possibility we carry forward the torch of human curiosity lighting the way for discoveries yet to come"
+        ];
+        
         // Ultra+ mode: Complex words, lots of punctuation
-        this.ultraTexts = [
+        this.ultraTextsWithPunctuation = [
             "The quintessential algorithm demonstrates exponential computational complexity, necessitating sophisticated optimization methodologies and parallel processing architectures.",
             "Cryptocurrency's decentralized blockchain infrastructure revolutionizes traditional financial paradigms, implementing cryptographic protocols and consensus mechanisms.",
             "Quantum computing leverages superposition and entanglement phenomena, enabling unprecedented computational capabilities beyond classical binary limitations.",
@@ -114,8 +184,43 @@ class TypingTest {
             "Knowledge management systems organize information assets, enabling efficient knowledge sharing and collaborative problem-solving across organizational boundaries."
         ];
         
+        this.ultraTextsWithoutPunctuation = [
+            "The quintessential algorithm demonstrates exponential computational complexity necessitating sophisticated optimization methodologies and parallel processing architectures",
+            "Cryptocurrency's decentralized blockchain infrastructure revolutionizes traditional financial paradigms implementing cryptographic protocols and consensus mechanisms",
+            "Quantum computing leverages superposition and entanglement phenomena enabling unprecedented computational capabilities beyond classical binary limitations",
+            "Neural networks employ backpropagation algorithms to minimize loss functions through gradient descent optimization in multidimensional parameter spaces",
+            "Cybersecurity frameworks incorporate zero-trust architectures implementing multi-factor authentication protocols and intrusion detection systems",
+            "Microservices architecture facilitates scalable distributed application development through containerization and orchestration platforms",
+            "Machine learning pipelines require extensive data preprocessing feature engineering and hyperparameter tuning for optimal model performance",
+            "DevOps methodologies integrate continuous integration/continuous deployment CI/CD pipelines with automated testing and monitoring systems",
+            "Big data analytics processes petabytes of structured and unstructured data through distributed computing frameworks and real-time streaming platforms",
+            "Internet of Things IoT ecosystems interconnect billions of devices generating massive datasets for predictive analytics and automation systems",
+            "Distributed ledger technology fundamentally transforms transactional transparency through immutable cryptographic verification and consensus-driven validation protocols",
+            "Artificial intelligence systems leverage deep learning architectures to process complex multimodal datasets enabling autonomous decision-making capabilities",
+            "Cloud-native applications utilize container orchestration platforms to achieve horizontal scalability and fault-tolerant deployment across distributed infrastructure",
+            "Edge computing paradigms shift computational workloads closer to data sources minimizing latency and optimizing bandwidth utilization in distributed networks",
+            "Natural language processing algorithms employ transformer architectures to understand contextual relationships and semantic nuances in human communication",
+            "Cybersecurity frameworks implement defense-in-depth strategies incorporating threat intelligence feeds and behavioral analytics for proactive threat mitigation",
+            "Data science methodologies encompass statistical analysis machine learning algorithms and domain expertise to extract actionable insights from complex datasets",
+            "Software engineering practices emphasize modular design principles enabling maintainable codebases and scalable system architectures",
+            "Network infrastructure optimization requires sophisticated traffic engineering and load balancing algorithms to ensure optimal performance and reliability",
+            "Virtualization technologies abstract hardware resources enabling efficient resource utilization and flexible deployment strategies across heterogeneous environments",
+            "Application programming interfaces APIs facilitate seamless integration between disparate systems enabling data exchange and functional interoperability",
+            "Database management systems implement ACID compliance protocols to ensure transactional integrity and data consistency across distributed environments",
+            "Mobile application development frameworks provide cross-platform compatibility while maintaining native performance characteristics and user experience standards",
+            "Web application security encompasses input validation output encoding and session management to prevent common vulnerability exploitation and data breaches",
+            "Performance optimization techniques include caching strategies database query optimization and resource compression to enhance application responsiveness",
+            "User experience design principles emphasize accessibility usability and intuitive interaction patterns to maximize user engagement and satisfaction",
+            "Continuous monitoring systems provide real-time visibility into application performance enabling proactive issue identification and resolution",
+            "Scalability engineering involves horizontal and vertical scaling strategies to accommodate growing user demands and increasing computational requirements",
+            "Disaster recovery planning ensures business continuity through redundant systems backup strategies and automated failover mechanisms",
+            "Compliance frameworks establish regulatory adherence through audit trails data governance policies and security control implementations",
+            "Innovation management processes facilitate rapid prototyping iterative development and user feedback integration to accelerate product evolution",
+            "Knowledge management systems organize information assets enabling efficient knowledge sharing and collaborative problem-solving across organizational boundaries"
+        ];
+        
         // Set default texts based on current difficulty
-        this.texts = this.shuffleArray(this.typistTexts); // Default to typist mode
+        this.texts = this.shuffleArray(this.typistTextsWithPunctuation); // Default to typist mode with punctuation
         
         this.quotes = [
             "The only way to do great work is to love what you do. - Steve Jobs",
@@ -180,6 +285,7 @@ class TypingTest {
         this.testType = 'timed';
         this.difficulty = 'typist'; // Default difficulty
         this.focusMode = false; // Default to focus mode off
+        this.punctuationMode = true; // Default to punctuation on
         this.targetWords = 50;
         this.errors = 0;
         this.totalTyped = 0;
@@ -299,6 +405,7 @@ class TypingTest {
         this.typeButtons = document.querySelectorAll('.type-btn');
         this.difficultyButtons = document.querySelectorAll('.difficulty-btn');
         this.focusButtons = document.querySelectorAll('.focus-btn');
+        this.punctuationButtons = document.querySelectorAll('.punctuation-btn');
         this.wordCountGroup = document.getElementById('wordCountGroup');
         this.wordCountInput = document.getElementById('wordCountInput');
     }
@@ -337,6 +444,10 @@ class TypingTest {
         
         this.focusButtons.forEach(btn => {
             btn.addEventListener('click', () => this.setFocusMode(btn));
+        });
+        
+        this.punctuationButtons.forEach(btn => {
+            btn.addEventListener('click', () => this.setPunctuationMode(btn));
         });
         
         // Popup event listeners
@@ -441,18 +552,8 @@ class TypingTest {
         button.classList.add('active');
         this.difficulty = button.dataset.difficulty;
         
-        // Update texts based on difficulty
-        switch(this.difficulty) {
-            case 'chill':
-                this.texts = this.shuffleArray(this.chillTexts);
-                break;
-            case 'typist':
-                this.texts = this.shuffleArray(this.typistTexts);
-                break;
-            case 'ultra':
-                this.texts = this.shuffleArray(this.ultraTexts);
-                break;
-        }
+        // Update texts based on difficulty and punctuation mode
+        this.updateTextsBasedOnSettings();
         
         this.resetTest();
     }
@@ -466,6 +567,38 @@ class TypingTest {
             this.focusButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
             this.focusMode = false;
+        }
+    }
+    
+    setPunctuationMode(button) {
+        this.punctuationButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        this.punctuationMode = button.dataset.punctuation === 'on';
+        
+        // Update texts based on difficulty and punctuation mode
+        this.updateTextsBasedOnSettings();
+        
+        this.resetTest();
+    }
+    
+    updateTextsBasedOnSettings() {
+        // Update texts based on difficulty and punctuation mode
+        switch(this.difficulty) {
+            case 'chill':
+                this.texts = this.punctuationMode ? 
+                    this.shuffleArray(this.chillTextsWithPunctuation) : 
+                    this.shuffleArray(this.chillTextsWithoutPunctuation);
+                break;
+            case 'typist':
+                this.texts = this.punctuationMode ? 
+                    this.shuffleArray(this.typistTextsWithPunctuation) : 
+                    this.shuffleArray(this.typistTextsWithoutPunctuation);
+                break;
+            case 'ultra':
+                this.texts = this.punctuationMode ? 
+                    this.shuffleArray(this.ultraTextsWithPunctuation) : 
+                    this.shuffleArray(this.ultraTextsWithoutPunctuation);
+                break;
         }
     }
     

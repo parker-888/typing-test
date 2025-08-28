@@ -293,7 +293,7 @@ body {
     flex-wrap: wrap;
 }
 
-.time-btn, .type-btn, .difficulty-btn, .focus-btn {
+.time-btn, .type-btn, .difficulty-btn, .focus-btn, .punctuation-btn {
     padding: 0.4rem 0.8rem;
     font-family: 'Orbitron', monospace;
     font-size: 0.8rem;
@@ -310,13 +310,13 @@ body {
     box-shadow: 0 0 8px var(--shadow-primary);
 }
 
-.time-btn:hover, .type-btn:hover, .difficulty-btn:hover, .focus-btn:hover {
+.time-btn:hover, .type-btn:hover, .difficulty-btn:hover, .focus-btn:hover, .punctuation-btn:hover {
     background: var(--shadow-secondary);
     box-shadow: 0 0 15px var(--shadow-glow);
     transform: translateY(-2px);
 }
 
-.time-btn.active, .type-btn.active, .difficulty-btn.active, .focus-btn.active {
+.time-btn.active, .type-btn.active, .difficulty-btn.active, .focus-btn.active, .punctuation-btn.active {
     background: var(--shadow-secondary);
     box-shadow: 
         0 0 20px var(--shadow-glow),
@@ -329,7 +329,8 @@ body {
 [data-theme="light"] .time-btn.active, 
 [data-theme="light"] .type-btn.active, 
 [data-theme="light"] .difficulty-btn.active, 
-[data-theme="light"] .focus-btn.active {
+[data-theme="light"] .focus-btn.active,
+[data-theme="light"] .punctuation-btn.active {
     color: #ff8c00;
     text-shadow: 0 0 10px #ff8c00;
 }
