@@ -508,6 +508,57 @@ class TypingTest {
     startTest() {
         if (this.isRunning) return;
         
+        // For timed tests, show countdown first
+        if (this.testType === 'timed') {
+            this.showCountdown();
+            return;
+        }
+        
+        this.initializeTest();
+    }
+    
+    showCountdown() {
+        const countdownPopup = document.getElementById('countdownPopup');
+        const countdownNumber = document.getElementById('countdownNumber');
+        const countdownText = document.getElementById('countdownText');
+        
+        if (countdownPopup && countdownNumber && countdownText) {
+            countdownPopup.style.display = 'flex';
+            
+            let count = 3;
+            countdownNumber.textContent = count;
+            countdownText.textContent = 'Test begins in';
+            
+            const countdownInterval = setInterval(() => {
+                count--;
+                
+                if (count > 0) {
+                    countdownNumber.textContent = count;
+                    // Add animation class to trigger the pulse effect
+                    countdownNumber.classList.remove('countdown-pulse');
+                    void countdownNumber.offsetWidth; // Trigger reflow
+                    countdownNumber.classList.add('countdown-pulse');
+                } else if (count === 0) {
+                    countdownNumber.textContent = 'GO!';
+                    countdownText.textContent = 'Start typing!';
+                    // Add animation class to trigger the pulse effect
+                    countdownNumber.classList.remove('countdown-pulse');
+                    void countdownNumber.offsetWidth; // Trigger reflow
+                    countdownNumber.classList.add('countdown-pulse');
+                } else {
+                    // Countdown finished, hide popup and start test
+                    clearInterval(countdownInterval);
+                    countdownPopup.style.display = 'none';
+                    this.initializeTest();
+                }
+            }, 1000);
+        } else {
+            // Fallback if countdown elements not found
+            this.initializeTest();
+        }
+    }
+    
+    initializeTest() {
         this.isRunning = true;
         this.startTime = Date.now();
         this.errors = 0;
