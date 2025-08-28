@@ -39,6 +39,26 @@
     --success-color: #388e3c;
 }
 
+/* Dark Text Theme */
+[data-theme="dark-text"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: rgba(255, 255, 255, 0.9);
+    --bg-tertiary: rgba(255, 255, 255, 0.95);
+    --text-primary: #1a1a1a;
+    --text-secondary: #333333;
+    --text-tertiary: #555555;
+    --accent-primary: #2c3e50;
+    --accent-secondary: #34495e;
+    --accent-highlight: #e74c3c;
+    --border-primary: #2c3e50;
+    --border-secondary: rgba(44, 62, 80, 0.3);
+    --shadow-primary: rgba(44, 62, 80, 0.2);
+    --shadow-secondary: rgba(44, 62, 80, 0.1);
+    --shadow-glow: rgba(44, 62, 80, 0.3);
+    --error-color: #e74c3c;
+    --success-color: #27ae60;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -502,9 +522,20 @@ body {
     text-shadow: 0 0 3px rgba(255, 215, 0, 0.3);
 }
 
+/* Dark text theme specific styling for future text */
+[data-theme="dark-text"] .future {
+    color: rgba(44, 62, 80, 0.6);
+    text-shadow: 0 0 3px rgba(44, 62, 80, 0.3);
+}
+
 [data-theme="light"] .future:hover {
     opacity: 0.8;
     text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+[data-theme="dark-text"] .future:hover {
+    opacity: 0.8;
+    text-shadow: 0 0 5px rgba(44, 62, 80, 0.5);
 }
 
 .correct {

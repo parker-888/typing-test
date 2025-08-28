@@ -799,16 +799,16 @@ class TypingTest {
                 className = 'future';
             }
             
-            // Add cursor before the current character to type
-            if (i === input.length) {
+            // Add cursor before the current character to type (only if typing has started)
+            if (i === input.length && input.length > 0) {
                 html += '<span class="cursor"></span>';
             }
             
             html += `<span class="${className}">${char}</span>`;
         }
         
-        // Add cursor at the end if we've typed everything
-        if (input.length >= this.currentText.length) {
+        // Add cursor at the end if we've typed everything (only if typing has started)
+        if (input.length >= this.currentText.length && input.length > 0) {
             html += '<span class="cursor"></span>';
         }
         
@@ -821,7 +821,7 @@ class TypingTest {
             let className = 'future';
             html += `<span class="${className}">${this.currentText[i]}</span>`;
         }
-        html += '<span class="cursor"></span>';
+        // No cursor initially - only show when typing starts
         this.textDisplay.innerHTML = html;
     }
     
@@ -958,20 +958,35 @@ class TypingTest {
     
     toggleTheme() {
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        let newTheme;
+        
+        // Cycle through themes: dark -> light -> dark-text -> dark
+        if (currentTheme === 'dark') {
+            newTheme = 'light';
+        } else if (currentTheme === 'light') {
+            newTheme = 'dark-text';
+        } else {
+            newTheme = 'dark';
+        }
         
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         this.updateThemeIcon(newTheme);
         
-        // Update particle colors for light theme
+        // Update particle colors for theme
         this.updateParticleColors(newTheme);
     }
     
     updateThemeIcon(theme) {
         const themeIcon = document.querySelector('.theme-icon');
         if (themeIcon) {
-            themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+            if (theme === 'dark') {
+                themeIcon.textContent = '🌙';
+            } else if (theme === 'light') {
+                themeIcon.textContent = '☀️';
+            } else if (theme === 'dark-text') {
+                themeIcon.textContent = '📝';
+            }
         }
     }
     
@@ -1009,7 +1024,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to get theme-aware particle color
     function getParticleColor() {
         const theme = document.documentElement.getAttribute('data-theme') || 'dark';
-        return theme === 'dark' ? '#00ffff' : '#ffd700';
+        if (theme === 'dark') {
+            return '#00ffff';
+        } else if (theme === 'light') {
+            return '#ffd700';
+        } else if (theme === 'dark-text') {
+            return '#2c3e50';
+        }
+        return '#00ffff'; // fallback
     }
     
     class Particle {
