@@ -795,17 +795,20 @@ class TypingTest {
                         className = 'incorrect';
                     }
                 }
-            } else if (i === input.length) {
-                className = 'current';
             } else {
                 className = 'future';
+            }
+            
+            // Add cursor before the current character to type
+            if (i === input.length) {
+                html += '<span class="cursor"></span>';
             }
             
             html += `<span class="${className}">${char}</span>`;
         }
         
-        // Add cursor
-        if (input.length < this.currentText.length) {
+        // Add cursor at the end if we've typed everything
+        if (input.length >= this.currentText.length) {
             html += '<span class="cursor"></span>';
         }
         
@@ -815,7 +818,7 @@ class TypingTest {
     displayText() {
         let html = '';
         for (let i = 0; i < this.currentText.length; i++) {
-            let className = i === 0 ? 'current' : 'future';
+            let className = 'future';
             html += `<span class="${className}">${this.currentText[i]}</span>`;
         }
         html += '<span class="cursor"></span>';
