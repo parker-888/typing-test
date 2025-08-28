@@ -1031,7 +1031,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (theme === 'dark') {
             return '#00ffff';
         } else if (theme === 'light') {
-            return '#ffd700';
+            return '#e67e22';
         } else if (theme === 'dark-text') {
             return '#2c3e50';
         } else if (theme === 'light-text') {
