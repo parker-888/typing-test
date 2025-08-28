@@ -1,6 +1,26 @@
 /* CSS Variables for Light/Dark Themes */
 :root {
-    /* Dark Theme (Default) */
+    /* Military Theme (Default) */
+    --bg-primary: #2d4a22;
+    --bg-secondary: rgba(45, 74, 34, 0.9);
+    --bg-tertiary: rgba(45, 74, 34, 0.95);
+    --text-primary: #d4af37;
+    --text-secondary: #b8860b;
+    --text-tertiary: #8b6914;
+    --accent-primary: #8fbc8f;
+    --accent-secondary: #556b2f;
+    --accent-highlight: #ffd700;
+    --border-primary: #8fbc8f;
+    --border-secondary: rgba(143, 188, 143, 0.4);
+    --shadow-primary: rgba(143, 188, 143, 0.25);
+    --shadow-secondary: rgba(143, 188, 143, 0.1);
+    --shadow-glow: rgba(143, 188, 143, 0.3);
+    --error-color: #dc143c;
+    --success-color: #32cd32;
+}
+
+/* Blue Theme - Original Dark Theme */
+[data-theme="dark"] {
     --bg-primary: #000;
     --bg-secondary: rgba(0, 0, 0, 0.6);
     --bg-tertiary: rgba(0, 0, 0, 0.8);
@@ -77,6 +97,26 @@
     --shadow-glow: rgba(236, 240, 241, 0.3);
     --error-color: #e74c3c;
     --success-color: #27ae60;
+}
+
+/* Military Theme - Olive Green and Tan */
+[data-theme="military"] {
+    --bg-primary: #2d4a22;
+    --bg-secondary: rgba(45, 74, 34, 0.9);
+    --bg-tertiary: rgba(45, 74, 34, 0.95);
+    --text-primary: #d4af37;
+    --text-secondary: #b8860b;
+    --text-tertiary: #8b6914;
+    --accent-primary: #8fbc8f;
+    --accent-secondary: #556b2f;
+    --accent-highlight: #ffd700;
+    --border-primary: #8fbc8f;
+    --border-secondary: rgba(143, 188, 143, 0.4);
+    --shadow-primary: rgba(143, 188, 143, 0.25);
+    --shadow-secondary: rgba(143, 188, 143, 0.1);
+    --shadow-glow: rgba(143, 188, 143, 0.3);
+    --error-color: #dc143c;
+    --success-color: #32cd32;
 }
 
 * {

@@ -1131,8 +1131,8 @@ class TypingTest {
     
     // Theme management methods
     initializeTheme() {
-        // Check for saved theme preference or default to dark
-        const savedTheme = localStorage.getItem('theme') || 'dark';
+        // Check for saved theme preference or default to military theme
+        const savedTheme = localStorage.getItem('theme') || 'military';
         document.documentElement.setAttribute('data-theme', savedTheme);
         this.updateThemeIcon(savedTheme);
     }
@@ -1150,13 +1150,15 @@ class TypingTest {
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         let newTheme;
         
-        // Cycle through themes: dark -> light -> dark-text -> light-text -> dark
+        // Cycle through themes: dark -> light -> dark-text -> light-text -> military -> dark
         if (currentTheme === 'dark') {
             newTheme = 'light';
         } else if (currentTheme === 'light') {
             newTheme = 'dark-text';
         } else if (currentTheme === 'dark-text') {
             newTheme = 'light-text';
+        } else if (currentTheme === 'light-text') {
+            newTheme = 'military';
         } else {
             newTheme = 'dark';
         }
@@ -1180,6 +1182,8 @@ class TypingTest {
                 themeIcon.textContent = '📝';
             } else if (theme === 'light-text') {
                 themeIcon.textContent = '✨';
+            } else if (theme === 'military') {
+                themeIcon.textContent = '🎖️';
             }
         }
     }
@@ -1217,7 +1221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Function to get theme-aware particle color
     function getParticleColor() {
-        const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const theme = document.documentElement.getAttribute('data-theme') || 'military';
         if (theme === 'dark') {
             return '#00ffff';
         } else if (theme === 'light') {
@@ -1226,8 +1230,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return '#2c3e50';
         } else if (theme === 'light-text') {
             return '#ecf0f1';
+        } else if (theme === 'military') {
+            return '#8fbc8f';
         }
-        return '#00ffff'; // fallback
+        return '#8fbc8f'; // fallback to military
     }
     
     class Particle {
