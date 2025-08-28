@@ -59,6 +59,26 @@
     --success-color: #27ae60;
 }
 
+/* Light Text Theme (Inverse of Dark Text) */
+[data-theme="light-text"] {
+    --bg-primary: #2c3e50;
+    --bg-secondary: rgba(44, 62, 80, 0.9);
+    --bg-tertiary: rgba(44, 62, 80, 0.95);
+    --text-primary: #ffffff;
+    --text-secondary: #e8e8e8;
+    --text-tertiary: #cccccc;
+    --accent-primary: #ecf0f1;
+    --accent-secondary: #bdc3c7;
+    --accent-highlight: #e74c3c;
+    --border-primary: #ecf0f1;
+    --border-secondary: rgba(236, 240, 241, 0.3);
+    --shadow-primary: rgba(236, 240, 241, 0.2);
+    --shadow-secondary: rgba(236, 240, 241, 0.1);
+    --shadow-glow: rgba(236, 240, 241, 0.3);
+    --error-color: #e74c3c;
+    --success-color: #27ae60;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -536,6 +556,16 @@ body {
 [data-theme="dark-text"] .future:hover {
     opacity: 0.8;
     text-shadow: 0 0 5px rgba(44, 62, 80, 0.5);
+}
+
+[data-theme="light-text"] .future {
+    color: rgba(236, 240, 241, 0.6);
+    text-shadow: 0 0 3px rgba(236, 240, 241, 0.3);
+}
+
+[data-theme="light-text"] .future:hover {
+    opacity: 0.8;
+    text-shadow: 0 0 5px rgba(236, 240, 241, 0.5);
 }
 
 .correct {

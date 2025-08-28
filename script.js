@@ -960,11 +960,13 @@ class TypingTest {
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         let newTheme;
         
-        // Cycle through themes: dark -> light -> dark-text -> dark
+        // Cycle through themes: dark -> light -> dark-text -> light-text -> dark
         if (currentTheme === 'dark') {
             newTheme = 'light';
         } else if (currentTheme === 'light') {
             newTheme = 'dark-text';
+        } else if (currentTheme === 'dark-text') {
+            newTheme = 'light-text';
         } else {
             newTheme = 'dark';
         }
@@ -986,6 +988,8 @@ class TypingTest {
                 themeIcon.textContent = '☀️';
             } else if (theme === 'dark-text') {
                 themeIcon.textContent = '📝';
+            } else if (theme === 'light-text') {
+                themeIcon.textContent = '✨';
             }
         }
     }
@@ -1030,6 +1034,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return '#ffd700';
         } else if (theme === 'dark-text') {
             return '#2c3e50';
+        } else if (theme === 'light-text') {
+            return '#ecf0f1';
         }
         return '#00ffff'; // fallback
     }
