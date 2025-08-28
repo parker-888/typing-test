@@ -926,8 +926,14 @@ class TypingTest {
             this.wordCount = Math.round(input.split(/\s+/).filter(word => word.length > 0).length);
         }
         
-        // Update display
-        this.updateTextDisplay(input);
+        // Check if we need to change text before updating display
+        const shouldChangeText = (this.testType === 'timed' || this.testType === 'words') && input.length >= this.currentText.length;
+        
+        // Only update display if we're not about to change text
+        if (!shouldChangeText) {
+            // Update display
+            this.updateTextDisplay(input);
+        }
         
         // Mobile: Ensure text display stays visible during typing
         if (this.isMobile) {
@@ -945,7 +951,7 @@ class TypingTest {
             this.endTest();
         } else if (this.testType === 'quote' && input.length >= this.currentText.length) {
             this.endTest();
-        } else if ((this.testType === 'timed' || this.testType === 'words') && input.length >= this.currentText.length) {
+        } else if (shouldChangeText) {
             // For timed and word tests, provide infinite text
             this.provideNextText();
         }
